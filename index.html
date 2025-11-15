@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="unassigned-container">
-        <h2>unassigned Employees</h2>
+    <section class="unassigned-container">
+        <!-- <h2>unassigned Employees</h2>
         <div class="filters">
             <input type="text" placeholder="Enter Name/Role">
-            <!-- filter by -->
+            <br>
             <select name="" id="role-filter">
                 <option value="">Role</option>  
                 <option value="Receptionist">Receptionist</option>
@@ -37,10 +37,45 @@
                     <img src="Images/delete.png" alt="">
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="rooms-container">
+        </div> !-->
+        <form>
+            <div>
+                <label for="">Name</label>
+                <input type="text" name="" id="name-input">
+            </div>
+            <!-- <label for="">Role</label> -->
+            <select name="" id="role-input">
+                <option value="">Role</option>  
+                <option value="Receptionist">Receptionist</option>
+                <option value="IT Technician">IT Technician</option>
+                <option value="Security Officer">Security Officer</option>
+                <option value="Manager">Manager</option>
+                <option value="Cleaning Staff">Cleaning Staff</option>
+                <option value="other">other</option>
+            </select>
+            <div>
+                <label for="">Phone number </label>
+                <input type="tel" name="" id="phonenum-input" placeholder="Phone number">
+            </div>
+            <div>
+                <label for="">Email address </label>
+                <input type="mail" name="" id="mail-input" placeholder="Email address">
+            </div>
+            <div>
+                <label for="">Picture Url</label>
+                <input type="text" name="" id="picture-input" placeholder="Picture Url">
+                
+            </div>
+            <button> add Expereience</button>
 
-    </div>
+            <div id="confirm-cancel">
+                <button> Cancel</button>
+                <button type="submit">Confirm</button>
+            </div>
+        </form>
+    </section>
+    <section class="rooms-container">
+        
+    </section>
 </body>
 </html>
