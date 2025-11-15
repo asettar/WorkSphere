@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="unassigned-container">
+        <h2>unassigned Employees</h2>
+        <div class="filters">
+            <input type="text" placeholder="Enter Name/Role">
+            <!-- filter by -->
+            <select name="" id="role-filter">
+                <option value="">Role</option>  
+                <option value="Receptionist">Receptionist</option>
+                <option value="IT Technician">IT Technician</option>
+                <option value="Security Officer">Security Officer</option>
+                <option value="Manager">Manager</option>
+                <option value="Cleaning Staff">Cleaning Staff</option>
+                <option value="other">other</option>
+            </select>
+            <button id = "add-btn"> Add+ </button>
+        </div>
+        <div id = "employees-container">
+            <div class="employee-card">
+                <img class = "profile-icon" src="https://cdn-icons-png.flaticon.com/512/12225/12225935.png" alt="">
+                <div class = "name-role">
+                    <span>FirstName SecondName</span>
+                    <br>
+                    <span>Role</span>
+                </div>
+                <div class = "edit-view-delete">
+                    <img src="Images/edit.png" alt="">
+                    <img src="Images/view.png" alt="">
+                    <img src="Images/delete.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rooms-container">
+
+    </div>
+</body>
+</html>
