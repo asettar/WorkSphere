@@ -39,20 +39,23 @@
             </div>
         </div> !-->
         <form>
+            <h2> Add new employee </h2>
             <div>
                 <label for="">Name</label>
-                <input type="text" name="" id="name-input">
+                <input type="text" name="" id="name-input" placeholder="Enter Name">
             </div>
-            <!-- <label for="">Role</label> -->
-            <select name="" id="role-input">
-                <option value="">Role</option>  
-                <option value="Receptionist">Receptionist</option>
-                <option value="IT Technician">IT Technician</option>
-                <option value="Security Officer">Security Officer</option>
-                <option value="Manager">Manager</option>
-                <option value="Cleaning Staff">Cleaning Staff</option>
-                <option value="other">other</option>
-            </select>
+            <div>
+                <label for="">Role</label>
+                <select name="" id="role-input">
+                    <option value="" default>Select role</option>  
+                    <option value="Receptionist">Receptionist</option>
+                    <option value="IT Technician">IT Technician</option>
+                    <option value="Security Officer">Security Officer</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Cleaning Staff">Cleaning Staff</option>
+                    <option value="other">other</option>
+                </select>
+            </div>
             <div>
                 <label for="">Phone number </label>
                 <input type="tel" name="" id="phonenum-input" placeholder="Phone number">
@@ -66,11 +69,23 @@
                 <input type="text" name="" id="picture-input" placeholder="Picture Url">
                 
             </div>
-            <button> add Expereience</button>
+            <div>
+                <label for="">Position</label>
+                <input type="text" name="" class="position-input" placeholder="Enter Position">
+            </div>
+            <div>
+                <label for="">Start Date</label>
+                <input type="date" name="" id="picture-input">
+            </div>
+            <div>
+                <label for="">End Date</label>
+                <input type="date" name="" id="picture-input">
+            </div>
+            <button id = "add-experience-btn"> add Expereience</button>
 
             <div id="confirm-cancel">
-                <button> Cancel</button>
-                <button type="submit">Confirm</button>
+                <button id = "cancel-btn"> Cancel</button>
+                <button type="submit" id = "confirm-btn">Confirm</button>
             </div>
         </form>
     </section>

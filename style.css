@@ -8,15 +8,20 @@ body {
     display: grid;
     grid-template-columns: clamp(325px, 23rem, 380px) 1fr;
     gap: 10px;
+    font-family: Arial, sans-serif;
 }
 
 .unassigned-container {
-    border: 2px solid red;
-    padding: 1em;
+    border: 2px solid black;
+    padding: 2em 1.5em;
     /* height: 100vh; */
     gap: 1rem;
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
+    /* enable-scrolling */
+    max-height: 100vh;
+    overflow-y : auto; 
 }
 
 .rooms-container {
@@ -62,13 +67,75 @@ form {
     display: flex;
     width : 100%;
     flex-direction: column;
-    gap: 0.5em;
+    gap: 1.7rem;
     z-index: 10000;
-    /* position: fixed; */
-    border: 2px solid red;
 }
 
+form label 
+{
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+#role-input 
+,form input{
+    border: none;
+    border-bottom: 2px solid rgb(118, 116, 116);
+    border-radius: 5px;
+    padding: 10px 15px;
+    background-color: rgb(255, 255, 255);
+}
+/* form input[] */
+
+form input::placeholder, 
+form select {
+    font-size: 1rem;
+    color: rgb(133, 131, 131);
+}
 form div {
     display: flex;
     flex-direction: column;
+    gap: 3px;
+}
+
+form h2 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+
+#add-experience-btn,
+#confirm-cancel button {
+    padding: 0.8rem 1rem;
+    background-color: rgb(39, 39, 39);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+}
+
+#confirm-cancel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* gap : 7.7rem; */
+}
+
+
+#cancel-btn,
+#confirm-btn {
+    width: 8rem;
+    background-color: #007bff;
+
+}
+
+#cancel-btn {
+    background-color: #818181 !important;
+    color: #000;    
+}
+
+#confirm-btn {
+    background-color: #007bff !important;
+    color: #fff;
 }
