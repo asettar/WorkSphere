@@ -8,12 +8,16 @@
 </head>
 <body>
     <section class="unassigned-container">
-        <!-- <h2>unassigned Employees</h2>
+        <h2>unassigned Employees</h2>
         <div class="filters">
-            <input type="text" placeholder="Enter Name/Role">
+            <div class = "search-add">
+                <input type="text" placeholder="Search Name/Role" id = "search-input">
+                <button id = "add-btn"> Add+ </button>
+            </div>
             <br>
+            <label for="">Filter by</label>
             <select name="" id="role-filter">
-                <option value="">Role</option>  
+                <option value="">Select Role</option>  
                 <option value="Receptionist">Receptionist</option>
                 <option value="IT Technician">IT Technician</option>
                 <option value="Security Officer">Security Officer</option>
@@ -21,13 +25,12 @@
                 <option value="Cleaning Staff">Cleaning Staff</option>
                 <option value="other">other</option>
             </select>
-            <button id = "add-btn"> Add+ </button>
         </div>
         <div id = "employees-container">
             <div class="employee-card">
                 <img class = "profile-icon" src="https://cdn-icons-png.flaticon.com/512/12225/12225935.png" alt="">
                 <div class = "name-role">
-                    <span>FirstName SecondName</span>
+                    <span>Name</span>
                     <br>
                     <span>Role</span>
                 </div>
@@ -37,7 +40,7 @@
                     <img src="Images/delete.png" alt="">
                 </div>
             </div>
-        </div> !-->
+        </div>
         <form>
             <h2> Add new employee </h2>
             <div>
