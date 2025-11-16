@@ -34,7 +34,9 @@ addButton.addEventListener('click', () => {
     showForm();
 });
 
-confirmButton.addEventListener('click', () => {
+confirmButton.addEventListener('click', (event) => {
+    console.log("confirm clicked");
+    event.preventDefault();
     // confirm
     if (isValidForm()) {
         // update Data based on current Mode(edit/delete)
