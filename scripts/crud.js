@@ -9,7 +9,7 @@ const cancelButton = document.getElementById('cancel-btn');
 let   currentEditCard = null, currentEditData = null;  // to track mode(edit or add)
 
 export function    editEmployee(employee, employeeCard) {
-    console.log("edit");
+    console.log("edit clicked");
     currentEditCard = employeeCard, currentEditData = employee;
     showForm();
     prefillFormData(employee);
@@ -17,10 +17,8 @@ export function    editEmployee(employee, employeeCard) {
 
 export function    deleteEmployee(employee, employeeCard) {
     if (confirm(`Employe with name : ${employee.name} will be deleted, are you sure?`));
-    console.log(employeesData);
     employeeCard.remove();
     removeEmployeeData(employee);
-    console.log(employeesData);
 }
 
 export function viewEmployee(employee) {
@@ -30,9 +28,22 @@ export function viewEmployee(employee) {
 function    addNewEmployee() {
     const employee = {id: Date.now()};
     getEmployeeData(employee);
-    console.log("new employee");
-    console.log(employee);
     addNewEmployeeData(employee);
+}
+
+function    updateEmployee() {
+    const employeeCard = currentEditCard, employeeData = currentEditData;
+    getEmployeeData(employeeData);
+    // update the card
+    const profileImage = employeeCard.firstElementChild;
+    const nameAndRole = profileImage.nextElementSibling;
+    profileImage.src = employeeData.photo;
+    nameAndRole.innerHTML = `
+        <span>${employeeData.name}</span>
+        <br>
+        <span>${employeeData.role}</span>
+    `; 
+    console.log(employeeData);
 }
 
 const isAdditionMode = () => currentEditCard === null;
@@ -49,13 +60,9 @@ confirmButton.addEventListener('click', (event) => {
     // confirm
     if (isValidForm()) {
         // update Data based on current Mode(edit/delete)
-        if (isAdditionMode()) {
-            // add New Wrok
+        if (isAdditionMode())
             addNewEmployee();
-        }
-        else {
-
-        }
+        else updateEmployee()
         resetAndCloseForm();
     }
 });

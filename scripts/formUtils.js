@@ -56,10 +56,8 @@ export function prefillFormData(employee) {
     roleInput.value = employee["role"];
     // add experiences
     for (let experience of employee.experience) {
-        console.log(experience);
         const newExperienceForm = addExperienceForm();
         const currentExperienceInputs = newExperienceForm.querySelectorAll('input');
-        console.log(currentExperienceInputs);
         currentExperienceInputs.forEach(input => {
             input.value = experience[input.name];
         });
@@ -73,7 +71,7 @@ export function getEmployeeData(employee) {
     employee["role"] = roleInput.value;
     // experiences
     let experiences = form.querySelectorAll('.experience-form');
-    if (!employee.experience) employee.experience = []; // to prevent push method crush
+    employee.experience = []; // reset experiences
     for (let experience of experiences) {
         let newExperience = {};
         const experienceInputs = experience.querySelectorAll('input');
