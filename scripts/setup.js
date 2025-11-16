@@ -50,6 +50,12 @@ export  function    removeEmployeeData(employee) {
     // todo: updateLocalStorage
 }
 
+export  function    addNewEmployeeData(employee) {
+    employeesData.push(employee);
+    addUnassignedEmployee(employee);
+    // todo : update localstorage
+}
+
 function    isUnassignedEmpolyee(employee) {
     return (employee.room === "unassigned");
 }

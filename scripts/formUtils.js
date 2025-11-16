@@ -66,6 +66,24 @@ export function prefillFormData(employee) {
     }
 }
  
+export function getEmployeeData(employee) {
+    formInputs.forEach((input) => {
+        employee[input.name] = input.value;
+    });
+    employee["role"] = roleInput.value;
+    // experiences
+    let experiences = form.querySelectorAll('.experience-form');
+    if (!employee.experience) employee.experience = []; // to prevent push method crush
+    for (let experience of experiences) {
+        let newExperience = {};
+        const experienceInputs = experience.querySelectorAll('input');
+        experienceInputs.forEach(input => {
+            newExperience[input.name] = input.value;
+        });
+        employee.experience.push(newExperience);
+    }
+}
+
 addExperienceButton.addEventListener('click', (event) => {
     console.log("add experience clicked");
     event.preventDefault();
