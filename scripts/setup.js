@@ -1,7 +1,7 @@
 import {addUnassignedEmployee} from "./cardsCreation.js"
 
 const demoEmployees = [
-{
+  {
     id: 1,
     name: "Achraf Settar",
     role: "IT Technician",
@@ -9,7 +9,10 @@ const demoEmployees = [
     email: "achrafsettar8@gmail.com",
     phone: "+212614643738",
     room: "unassigned",
-    experience: ["Network troubleshooting", "System maintenance"]
+    experience: [
+      { post: "Network troubleshooting", startDate: "2023-01-01", endDate: "2023-06-01" },
+      { post: "System maintenance", startDate: "2023-06-02", endDate: "2024-01-01" }
+    ]
   },
   {
     id: 2,
@@ -19,7 +22,10 @@ const demoEmployees = [
     email: "sara.benali@example.com",
     phone: "+212622334455",
     room: "unassigned",
-    experience: ["Customer assistance", "Front desk operations"]
+    experience: [
+      { post: "Customer assistance", startDate: "2022-03-01", endDate: "2023-01-01" },
+      { post: "Front desk operations", startDate: "2023-01-02", endDate: "2024-01-01" }
+    ]
   },
   {
     id: 3,

@@ -1,6 +1,8 @@
 const form = document.querySelector('form');
 const mainContent = document.querySelector('.main-sidebar-content');
 const addExperienceButton = document.getElementById('add-experience-btn');
+const formInputs = form.querySelectorAll('input');
+const roleInput = document.getElementById('role-input'); 
 
 export  function    showForm() {
     mainContent.style.display = 'none';
@@ -46,10 +48,21 @@ function    addExperienceForm() {
 }
 
 export function prefillFormData(employee) {
-    // prefill default inputs 
+    // prefill default inputs
+    formInputs.forEach((input) => {
+        input.value = employee[input.name];
+    });
+    roleInput.value = employee["role"];
     // add experiences
+    let experienceForms = form.querySelectorAll('.experience-form');
+    for (let i = 0; i < employee.experience.length; i++) {
+        const currentExperienceInputs = experienceForms[i].querySelectorAll('input');
+        currentExperienceInputs.forEach(input => {
+            input.value = employee.experience[i][input.name];
+        });
+    }
 }
-
+ 
 addExperienceButton.addEventListener('click', (event) => {
     console.log("add experience clicked");
     event.preventDefault();
