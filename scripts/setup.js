@@ -33,7 +33,7 @@ const demoEmployees = [
   }
 ];
 
-const employeesData = JSON.parse(localStorage.getItem('employees')
+export let employeesData = JSON.parse(localStorage.getItem('employees')
                     || JSON.stringify(demoEmployees));
 
 
