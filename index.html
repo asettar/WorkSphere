@@ -14,17 +14,18 @@
                 <input type="text" placeholder="Search Name/Role" id = "search-input">
                 <button id = "add-btn"> Add+ </button>
             </div>
-            <br>
-            <label for="">Filter by</label>
-            <select name="" id="role-filter">
-                <option value="">Select Role</option>  
-                <option value="Receptionist">Receptionist</option>
-                <option value="IT Technician">IT Technician</option>
-                <option value="Security Officer">Security Officer</option>
-                <option value="Manager">Manager</option>
-                <option value="Cleaning Staff">Cleaning Staff</option>
-                <option value="other">other</option>
-            </select>
+            <div class = "role-filter-container">
+                <label for="">Filter by</label>
+                <select name="" id="role-filter">
+                    <option value="">Select Role</option>  
+                    <option value="Receptionist">Receptionist</option>
+                    <option value="IT Technician">IT Technician</option>
+                    <option value="Security Officer">Security Officer</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Cleaning Staff">Cleaning Staff</option>
+                    <option value="other">other</option>
+                </select>
+            </div>
         </div>
         <div id = "employees-container">
             <div class="employee-card">
@@ -95,5 +96,7 @@
     <section class="rooms-container">
         
     </section>
+    <script type = "module" src = "scripts/setup.js"></script>
+    <script type = "module" src = "scripts/cardsCreation.js"></script>
 </body>
 </html>
