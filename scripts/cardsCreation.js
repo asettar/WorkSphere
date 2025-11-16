@@ -23,12 +23,12 @@ function    createNewaUnassignedCard(employee) {
 }
 function    addUnassignedCardEvents(unassignedCard, employee) {
     const editButton = unassignedCard.querySelector('.edit-btn');
-    const viewButton = unassignedCard.querySelector('.view-btn');
     const deleteButton = unassignedCard.querySelector('.delete-btn');
+    const viewButton = unassignedCard.querySelector('.view-btn');
 
-    editButton.addEventListener('click', () => editEmployee(employee));
+    editButton.addEventListener('click', () => editEmployee(employee, unassignedCard));
+    deleteButton.addEventListener('click', () => deleteEmployee(employee, unassignedCard));
     viewButton.addEventListener('click', () => viewEmployee(employee));
-    deleteButton.addEventListener('click', () => deleteEmployee(unassignedCard));
 }
 
 export function    addUnassignedEmployee(employee) {

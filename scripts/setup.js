@@ -39,6 +39,11 @@ export let employeesData = JSON.parse(localStorage.getItem('employees')
 
 console.log(employeesData);
 
+export  function    removeEmployeeData(employee) {
+    employeesData = employeesData.filter((elem) => elem.id !== employee.id);
+    // todo: updateLocalStorage
+}
+
 function    isUnassignedEmpolyee(employee) {
     return (employee.room === "unassigned");
 }
