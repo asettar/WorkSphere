@@ -8,11 +8,13 @@
 </head>
 <body>
     <section class="unassigned-container">
-        <h2>unassigned Employees</h2>
-        <div class="filters">
-            <div class = "search-add">
-                <input type="text" placeholder="Search Name/Role" id = "search-input">
-                <button id = "add-btn"> Add+ </button>
+        <div class = "main-sidebar-content">
+            <h2>unassigned Employees</h2>
+            <div class="filters">
+                <div class = "search-add">
+                    <input type="text" placeholder="Search Name/Role" id = "search-input">
+                    <button id = "add-btn"> Add+ </button>
+                </div>
             </div>
             <div class = "role-filter-container">
                 <label for="">Filter by</label>
@@ -26,19 +28,19 @@
                     <option value="other">other</option>
                 </select>
             </div>
-        </div>
-        <div id = "employees-container">
-            <div class="employee-card">
-                <img class = "profile-icon" src="https://cdn-icons-png.flaticon.com/512/12225/12225935.png" alt="">
-                <div class = "name-role">
-                    <span>Name</span>
-                    <br>
-                    <span>Role</span>
-                </div>
-                <div class = "edit-view-delete">
-                    <img src="Images/edit.png" alt="">
-                    <img src="Images/view.png" alt="">
-                    <img src="Images/delete.png" alt="">
+            <div id = "employees-container">
+                <div class="employee-card">
+                    <img class = "profile-icon" src="https://cdn-icons-png.flaticon.com/512/12225/12225935.png" alt="">
+                    <div class = "name-role">
+                        <span>Name</span>
+                        <br>
+                        <span>Role</span>
+                    </div>
+                    <div class = "edit-view-delete">
+                        <img src="Images/edit.png" alt="">
+                        <img src="Images/view.png" alt="">
+                        <img src="Images/delete.png" alt="">
+                    </div>
                 </div>
             </div>
         </div>
@@ -73,17 +75,19 @@
                 <input type="text" name="" id="picture-input" placeholder="Picture Url">
                 
             </div>
-            <div>
-                <label for="">Position</label>
-                <input type="text" name="" class="position-input" placeholder="Enter Position">
-            </div>
-            <div>
-                <label for="">Start Date</label>
-                <input type="date" name="" id="picture-input">
-            </div>
-            <div>
-                <label for="">End Date</label>
-                <input type="date" name="" id="picture-input">
+            <div class = "experience-form">
+                <div>
+                    <label for="">Position</label>
+                    <input type="text" name="" class="position-input" placeholder="Enter Position">
+                </div>
+                <div>
+                    <label for="">Start Date</label>
+                    <input type="date" name="" id="picture-input">
+                </div>
+                <div>
+                    <label for="">End Date</label>
+                    <input type="date" name="" id="picture-input">
+                </div>
             </div>
             <button id = "add-experience-btn"> add Expereience</button>
 
@@ -99,5 +103,7 @@
     <script type = "module" src = "scripts/setup.js"></script>
     <script type = "module" src = "scripts/cardsCreation.js"></script>
     <script type = "module" src = "scripts/crud.js"></script>
+    <script type = "module" src = "scripts/formUtils.js"></script>
+    <script type = "module" src = "scripts/formValidate.js"></script>
 </body>
 </html>
