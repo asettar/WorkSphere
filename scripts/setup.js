@@ -1,4 +1,4 @@
-import {addUnsassignedCard} from "./cardsCreation.js"
+import {addUnassignedEmployee} from "./cardsCreation.js"
 
 const demoEmployees = [
 {
@@ -46,7 +46,10 @@ function    isUnassignedEmpolyee(employee) {
 function    renderEmployeesCards() {
     for (let employee of employeesData) {
         if (isUnassignedEmpolyee(employee))
-            addUnsassignedCard(employee);
+            addUnassignedEmployee(employee);
+        else {
+            // assign to it's room
+        }
     }
 };
 
