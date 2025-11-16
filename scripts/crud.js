@@ -6,7 +6,7 @@ const addButton = document.getElementById('add-btn');
 const confirmButton = document.getElementById('confirm-btn');
 const cancelButton = document.getElementById('cancel-btn');
 let   currentEditCard = null, currentEditData = null;  // to track mode(edit or add)
-
+console.log(cancelButton);
 export function    editEmployee(employee, employeeCard) {
     console.log("edit");
     currentEditCard = employeeCard, currentEditData = employee;
@@ -44,6 +44,10 @@ confirmButton.addEventListener('click', (event) => {
     }
 });
 
-cancelButton.addEventListener('click', () => {
+cancelButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log("cancel clicked");
+    // return ;
     resetAndCloseForm(); 
 });
+

@@ -2,16 +2,15 @@ const form = document.querySelector('form');
 const mainContent = document.querySelector('.main-sidebar-content');
 const addExperienceButton = document.getElementById('add-experience-btn');
 
-console.log(form);
-console.log(mainContent);
-
 export  function    showForm() {
     mainContent.style.display = 'none';
     form.style.display = 'flex';
 }
 
 export function resetAndCloseForm() {
-    // todo: remove experiences from form;
+    form.reset();
+    const experiences = form.querySelectorAll('.experience-form');
+    experiences.forEach((elem) => elem.remove());
     form.style.display = 'none';
     mainContent.style.display = 'block';
 }

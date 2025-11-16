@@ -122,8 +122,8 @@ body {
 
 
 form {
-    /* display: none; */
-    display: flex;
+    display: none;
+    /* display: flex; */
     width : 100%;
     flex-direction: column;
     gap: 1.7rem;
