@@ -68,11 +68,20 @@ function    isValidEmail() {
     return isValid;
 }
 
+function    isValidPicture() {
+    if (!pictureInput.value) pictureInput.value = "https://cdn-icons-png.flaticon.com/512/12225/12225935.png";
+    const img = pictureInput.nextElementSibling;
+    img.src = pictureInput.value;
+    return true;
+}
+
 export function isValidForm() {
-    return (isValidName() && isValidPhoneNumber());
+    return (isValidName() && isValidPhoneNumber() && isValidEmail() && isValidPicture()
+        );
 }
 
 // events:
 nameInput.addEventListener('input', isValidName);
 phonenumInput.addEventListener('input', isValidPhoneNumber);
 mailInput.addEventListener('input', isValidEmail);
+pictureInput.addEventListener('input', isValidPicture);

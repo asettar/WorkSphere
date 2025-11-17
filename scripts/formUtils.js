@@ -13,6 +13,7 @@ export function resetAndCloseForm() {
     form.reset();
     const experiences = form.querySelectorAll('.experience-form');
     experiences.forEach((elem) => elem.remove());
+    document.getElementById('form-profile-image').src = "";
     form.style.display = 'none';
     mainContent.style.display = 'block';
 }
@@ -58,6 +59,8 @@ export function prefillFormData(employee) {
         input.value = employee[input.name];
     });
     roleInput.value = employee["role"];
+    // profile img
+    document.getElementById('form-profile-image').src = employee.photo;
     // add experiences
     for (let experience of employee.experience) {
         const newExperienceForm = addExperienceForm();
