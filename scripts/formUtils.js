@@ -3,7 +3,7 @@ import {isValidDate, isValidDescription} from './formValidate.js';   // for new 
 const form = document.querySelector('form');
 const mainContent = document.querySelector('.main-sidebar-content');
 const addExperienceButton = document.getElementById('add-experience-btn');
-const formInputs = form.querySelectorAll('input');
+const formInputs = form.querySelectorAll('input, textarea');
 const roleInput = document.getElementById('role-input'); 
 
 export  function    showForm() {
@@ -18,6 +18,13 @@ export function resetAndCloseForm() {
         if (idx) elem.remove();  // keep the first experience form
     });
     document.getElementById('form-profile-image').src = "";
+    // update border color to default && remove previous errors
+    formInputs.forEach(elem => {
+        const nextSibling = elem.nextElementSibling;
+        const isError = nextSibling && nextSibling.tagName === 'P';
+        if (isError) nextSibling.remove(); // it's error    
+        elem.style["border-color"] = 'gray';
+    });
 
     form.style.display = 'none';
     mainContent.style.display = 'block';
