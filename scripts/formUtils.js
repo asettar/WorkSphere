@@ -1,3 +1,5 @@
+import {isValidDate, isValidDescription} from './formValidate.js';   // for new Experience form events
+ 
 const form = document.querySelector('form');
 const mainContent = document.querySelector('.main-sidebar-content');
 const addExperienceButton = document.getElementById('add-experience-btn');
@@ -24,6 +26,18 @@ function    deleteExperience(experienceCard) {
     }
 }
 
+function    addNewExperienceEvents(newExperience) {
+    const deleteBtn = newExperience.querySelector('.delete-experience');
+    const description = newExperience.querySelector('textarea');
+    // const startDate = newExperience.querySelector('.experience-start-date');
+    // const endDate = newExperience.querySelector('.experience-end-date');
+
+    description.addEventListener('input', () => isValidDescription(description));
+    // startDate.addEventListener('input', isValidDate);
+    // endDate.addEventListener('input', isValidDate);
+    deleteBtn.addEventListener('click', () => deleteExperience(newExperience));
+}
+
 function    addExperienceForm() {
     const newExperience = document.createElement('div');
     newExperience.classList.add('experience-form');
@@ -35,20 +49,19 @@ function    addExperienceForm() {
         </div>
         <div>
             <label for="">Start Date</label>
-            <input type="date" name="startDate" id="picture-input">
+            <input type="date" name="startDate" class="experience-start-date">
         </div>
         <div>
             <label for="">End Date</label>
-            <input type="date" name="endDate" id="picture-input">
+            <input type="date" name="endDate" class="experience-end-date">
         </div>
         <div>
             <label for="">Description</label>
-            <textarea name="Description" rows = "4" cols = "40" value="" placeholder="Enter post description" ></textarea>
+            <textarea name="Description" class = "experience-description" rows = "4" cols = "40" value="" placeholder="Enter post description" ></textarea>
         </div>
         <img class = "delete-experience" src = "Images/delete.png">
     `;
-    const deleteBtn = newExperience.querySelector('.delete-experience');
-    deleteBtn.addEventListener('click', () => deleteExperience(newExperience));
+    addNewExperienceEvents(newExperience);
     form.insertBefore(newExperience, addExperienceButton);
     return newExperience;
 }

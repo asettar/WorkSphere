@@ -64,7 +64,7 @@ function    isValidEmail() {
     const isValid = pattern.test(mailInput.value);
 
     if (isValid) updateStyleOnSuccess(mailInput);
-    else  addError(mailInput, "invalid mail");
+    else  addError(mailInput, "invalid mail, format: Format: example@mail.com");
     return isValid;
 }
 
@@ -75,10 +75,33 @@ function    isValidPicture() {
     return true;
 }
 
+export function isValidDescription(description) {
+    console.log(description);   
+    const pattern = /^[a-zA-Z]{4,}$/
+    const isValid = pattern.test(description.value);
+
+    if (isValid) updateStyleOnSuccess(description);
+    else  addError(description, "Message should contain only alphabetic characters and has at least a lenght of 4.");
+    return isValid;
+}
+
+function    isValidDescriptions() {
+    const descriptions = form.querySelectorAll('.experience-description');
+    for (let description of descriptions) {
+        if (!isValidDescription(description)) return false;
+    }
+    return true;
+}
+
+export  function    isValidDate() {
+    return true;
+}
+
 export function isValidForm() {
     return (isValidName() && isValidPhoneNumber() && isValidEmail() && isValidPicture()
-        );
+        && isValidDescriptions());
 }
+
 
 // events:
 nameInput.addEventListener('input', isValidName);
