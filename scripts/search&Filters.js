@@ -1,5 +1,5 @@
 const searchInput = document.getElementById('search-input');
-const roleFilter = document.getElementById('search-input');
+const roleFilter = document.getElementById('role-filter');
 
 function    getEmployeeName(card) {
     const nameRole = card.querySelector('.name-role');
@@ -10,12 +10,17 @@ function    getEmployeeName(card) {
 function    getEmployeeRole(card) {
     const nameRole = card.querySelector('.name-role');
     console.log(nameRole.lastElementChild.innerText.toLowerCase());
-    return nameRole.lastElementChild.innerText.toLowerCase();
+    return nameRole.lastElementChild.innerText;
 }
 
 function    matchSearchBar(name, role) {
     const searchValue = searchInput.value.toLowerCase();
     return (name.startsWith(searchValue)|| role.startsWith(searchValue));
+}
+
+function    matchRoleFilter(role) {
+    const roleFilterValue = roleFilter.value;
+    return  (roleFilter.value === "" || roleFilterValue === role);
 }
 
 function    filterCards() {
@@ -25,11 +30,12 @@ function    filterCards() {
         console.log(card);
         const name = getEmployeeName(card);
         const role = getEmployeeRole(card);
-        if (matchSearchBar(name, role))
+        if (matchSearchBar(name, role) && matchRoleFilter(role))
             card.style.display = 'grid';
         else card.style.display = 'none';
     }
 }
 
 searchInput.addEventListener('input', filterCards);
-// roleFilter.addEventListener('change', filterCards);
+roleFilter.addEventListener('change', filterCards);
+window.addEventListener('DOMContentLoaded', filterCards);
