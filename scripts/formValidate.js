@@ -39,6 +39,16 @@ function    updateStyleOnSuccess(input) {
 
 
 // fucntions to  check validation of inputs feilds
+
+function    isValidPhoneNumber() {
+    const pattern = /^(\+212|0)\d{9}$/
+    const isValid = pattern.test(phonenumInput.value);
+
+    if (isValid) updateStyleOnSuccess(phonenumInput);
+    else  addError(phonenumInput, "Phone number consits of exactly 9 digits and starts with either 0 or +212");
+    return isValid;
+}
+
 function    isValidName() {
     const pattern = /^[a-zA-Z]{4,}\s[a-zA-Z]{4,}$/;
     const isValid = pattern.test(nameInput.value);
@@ -50,8 +60,9 @@ function    isValidName() {
 }
 
 export function isValidForm() {
-    return (isValidName());
+    return (isValidName() && isValidPhoneNumber());
 }
 
 // events:
 nameInput.addEventListener('input', isValidName);
+phonenumInput.addEventListener('input', isValidPhoneNumber);
