@@ -142,9 +142,29 @@ function    isValidDates() {
     return true;
 }
 
+export function isValidCompanyOrPostName(input) {
+    const value = input.value.trim();
+    if (value)
+        updateStyleOnSuccess(input);
+    else addError(input, "Invalid company name");
+    return value !== "";
+}
+
+function    isValidCompanyAndPostNames() {
+    const posts = form.querySelectorAll('.post-input');
+    const companies = form.querySelectorAll('.company-input');
+    for (let company of companies) {
+        if (!isValidCompanyOrPostName(company)) return false;
+    }
+    for (let post of posts) {
+        if (!isValidCompanyOrPostName(post)) return false;
+    }
+    return true;
+}
+
 export function isValidForm() {
     return (isValidName() && isValidPhoneNumber() && isValidEmail() && isValidPicture()
-        && isValidDates() && isValidDescriptions());
+        && isValidDates() && isValidDescriptions() && isValidCompanyAndPostNames());
 }
 
 

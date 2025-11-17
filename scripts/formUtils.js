@@ -1,4 +1,4 @@
-import {isValidDate, isValidDescription} from './formValidate.js';   // for new Experience form events
+import {isValidDate, isValidDescription, isValidCompanyOrPostName} from './formValidate.js';   // for new Experience form events
  
 const form = document.querySelector('form');
 const mainContent = document.querySelector('.main-sidebar-content');
@@ -38,11 +38,16 @@ function    deleteExperience(experienceCard) {
 }
 
 function    addNewExperienceEvents(newExperience) {
+    const post = newExperience.querySelector('.post-input');
+    const company = newExperience.querySelector('.company-input')
     const deleteBtn = newExperience.querySelector('.delete-experience');
     const description = newExperience.querySelector('textarea');
     const startDate = newExperience.querySelector('.experience-start-date');
     const endDate = newExperience.querySelector('.experience-end-date');
 
+    // events
+    post.addEventListener('input', () => isValidCompanyOrPostName(post));
+    company.addEventListener('input', () => isValidCompanyOrPostName(company));
     description.addEventListener('input', () => isValidDescription(description));
     startDate.addEventListener('input', () => isValidDate(startDate, startDate, endDate));
     endDate.addEventListener('input', () => isValidDate(endDate, startDate, endDate));
@@ -130,5 +135,4 @@ window.addEventListener('DOMContentLoaded', () => {
     // first experience form| remove the delete option
     experienceForm.lastElementChild.remove();
     formInputs = form.querySelectorAll('input, textarea');
-    console.log(formInputs);
 });
