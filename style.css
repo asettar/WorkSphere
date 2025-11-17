@@ -147,6 +147,7 @@ label
 /* form input[] */
 
 form input::placeholder, 
+textarea::placeholder,
 #search-input::placeholder,
 form select {
     font-size: 1rem;
@@ -214,4 +215,10 @@ form div {
     right: 10px;
     width: 2em;
     cursor: pointer;
+}
+
+textarea {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
 }

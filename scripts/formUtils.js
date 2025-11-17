@@ -40,6 +40,10 @@ function    addExperienceForm() {
             <label for="">End Date</label>
             <input type="date" name="endDate" id="picture-input">
         </div>
+        <div>
+            <label for="">Description</label>
+            <textarea name="Description" rows = "4" cols = "40" value="" placeholder="Enter post description" ></textarea>
+        </div>
         <img class = "delete-experience" src = "Images/delete.png">
     `;
     const deleteBtn = newExperience.querySelector('.delete-experience');
@@ -57,7 +61,7 @@ export function prefillFormData(employee) {
     // add experiences
     for (let experience of employee.experience) {
         const newExperienceForm = addExperienceForm();
-        const currentExperienceInputs = newExperienceForm.querySelectorAll('input');
+        const currentExperienceInputs = newExperienceForm.querySelectorAll('input, textarea');
         currentExperienceInputs.forEach(input => {
             input.value = experience[input.name];
         });
@@ -74,7 +78,7 @@ export function getEmployeeData(employee) {
     employee.experience = []; // reset experiences
     for (let experience of experiences) {
         let newExperience = {};
-        const experienceInputs = experience.querySelectorAll('input');
+        const experienceInputs = experience.querySelectorAll('input, textarea');
         experienceInputs.forEach(input => {
             newExperience[input.name] = input.value;
         });

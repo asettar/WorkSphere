@@ -1,7 +1,6 @@
 import {employeesData, removeEmployeeData, addNewEmployeeData} from './setup.js';
 import {showForm, prefillFormData, resetAndCloseForm, getEmployeeData} from './formUtils.js';
 import {isValidForm} from "./formValidate.js";
-import { addUnassignedEmployee } from './cardsCreation.js';
 
 const addButton = document.getElementById('add-btn');
 const confirmButton = document.getElementById('confirm-btn');
@@ -59,7 +58,7 @@ confirmButton.addEventListener('click', (event) => {
     event.preventDefault();
     // confirm
     if (isValidForm()) {
-        // update Data based on current Mode(edit/delete)
+        // update Data based on current Mode(edit/addition)
         if (isAdditionMode())
             addNewEmployee();
         else updateEmployee()
