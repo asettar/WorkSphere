@@ -59,6 +59,15 @@ function    isValidName() {
     return isValid;
 }
 
+function    isValidEmail() {
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    const isValid = pattern.test(mailInput.value);
+
+    if (isValid) updateStyleOnSuccess(mailInput);
+    else  addError(mailInput, "invalid mail");
+    return isValid;
+}
+
 export function isValidForm() {
     return (isValidName() && isValidPhoneNumber());
 }
@@ -66,3 +75,4 @@ export function isValidForm() {
 // events:
 nameInput.addEventListener('input', isValidName);
 phonenumInput.addEventListener('input', isValidPhoneNumber);
+mailInput.addEventListener('input', isValidEmail);
