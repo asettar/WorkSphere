@@ -3,8 +3,8 @@ import {isValidDate, isValidDescription} from './formValidate.js';   // for new 
 const form = document.querySelector('form');
 const mainContent = document.querySelector('.main-sidebar-content');
 const addExperienceButton = document.getElementById('add-experience-btn');
-const formInputs = form.querySelectorAll('input, textarea');
 const roleInput = document.getElementById('role-input'); 
+let formInputs; // will be initialized after adding first experience form 
 
 export  function    showForm() {
     mainContent.style.display = 'none';
@@ -19,6 +19,7 @@ export function resetAndCloseForm() {
     });
     document.getElementById('form-profile-image').src = "";
     // update border color to default && remove previous errors
+    console.log(formInputs);
     formInputs.forEach(elem => {
         const nextSibling = elem.nextElementSibling;
         const isError = nextSibling && nextSibling.tagName === 'P';
@@ -54,8 +55,12 @@ function    addExperienceForm() {
     newExperience.innerHTML = `
         <h3>Experience</h3>
         <div>
-            <label for="">Position</label>
-            <input type="text" name="post" class="position-input" placeholder="Enter Position">
+            <label for="">Post name</label>
+            <input type="text" name="post" class="post-input" placeholder="Enter Post name">
+        </div>
+        <div>
+            <label for="">Company name</label>
+            <input type="text" name="company" class="company-input" placeholder="Enter company name">
         </div>
         <div>
             <label for="">Start Date</label>
@@ -124,4 +129,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const experienceForm = addExperienceForm();
     // first experience form| remove the delete option
     experienceForm.lastElementChild.remove();
+    formInputs = form.querySelectorAll('input, textarea');
+    console.log(formInputs);
 });

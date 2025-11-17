@@ -10,8 +10,8 @@ const demoEmployees = [
     phone: "+212614643738",
     room: "unassigned",
     experience: [
-      { post: "Network troubleshooting", startDate: "2023-01-01",endDate: "2023-06-01", Description: "description"},
-      { post: "System maintenance", startDate: "2023-06-02", endDate: "2024-01-01", Description: "description" }
+      { post: "Network troubleshooting", company : "Oracle", startDate: "2023-01-01",endDate: "2023-06-01", Description: "description"},
+      { post: "System maintenance", company : "Youcode", startDate: "2023-06-02", endDate: "2024-01-01", Description: "description" }
     ]
   },
   {
@@ -23,8 +23,8 @@ const demoEmployees = [
     phone: "+212622334455",
     room: "unassigned",
     experience: [
-      { post: "Customer assistance", startDate: "2022-03-01", endDate: "2023-01-01", Description: "description" },
-      { post: "Front desk operations", startDate: "2023-01-02", endDate: "2024-01-01", Description: "description" }
+      { post: "Customer assistance", company : "OCP", startDate: "2022-03-01", endDate: "2023-01-01", Description: "description" },
+      { post: "Front desk operations", company : "Oracle", startDate: "2023-01-02", endDate: "2024-01-01", Description: "description" }
     ]
   },
   {
@@ -36,7 +36,7 @@ const demoEmployees = [
     phone: "+212655667788",
     room: "unassigned",
     experience: [
-      { post: "Customer assistance", startDate: "2022-03-01", endDate: "2023-01-01", Description: "description" }
+      { post: "Customer assistance", company : "Jesa", startDate: "2022-03-01", endDate: "2023-01-01", Description: "description" }
     ]
   }
 ];
