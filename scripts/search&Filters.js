@@ -3,13 +3,11 @@ const roleFilter = document.getElementById('role-filter');
 
 function    getEmployeeName(card) {
     const nameRole = card.querySelector('.name-role');
-    console.log(nameRole.firstElementChild.innerText.toLowerCase());
     return nameRole.firstElementChild.innerText.toLowerCase();
 }
 
 function    getEmployeeRole(card) {
     const nameRole = card.querySelector('.name-role');
-    console.log(nameRole.lastElementChild.innerText.toLowerCase());
     return nameRole.lastElementChild.innerText;
 }
 
@@ -27,7 +25,6 @@ function    filterCards() {
     console.log("executing filter");
     const employeesCards = document.querySelectorAll('.employee-card');
     for (const card of employeesCards) {
-        console.log(card);
         const name = getEmployeeName(card);
         const role = getEmployeeRole(card);
         if (matchSearchBar(name, role) && matchRoleFilter(role))

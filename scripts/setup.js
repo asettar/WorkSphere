@@ -35,7 +35,9 @@ const demoEmployees = [
     email: "hicham.amrani@example.com",
     phone: "+212655667788",
     room: "unassigned",
-    experience: []
+    experience: [
+      { post: "Customer assistance", startDate: "2022-03-01", endDate: "2023-01-01", Description: "description" }
+    ]
   }
 ];
 

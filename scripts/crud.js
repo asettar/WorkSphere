@@ -15,7 +15,7 @@ export function    editEmployee(employee, employeeCard) {
 }
 
 export function    deleteEmployee(employee, employeeCard) {
-    if (confirm(`Employe with name : ${employee.name} will be deleted, are you sure?`));
+    if (!confirm(`Employe with name : ${employee.name} will be deleted, are you sure?`)) return ;
     employeeCard.remove();
     removeEmployeeData(employee);
 }

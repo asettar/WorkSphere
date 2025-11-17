@@ -14,8 +14,11 @@ export  function    showForm() {
 export function resetAndCloseForm() {
     form.reset();
     const experiences = form.querySelectorAll('.experience-form');
-    experiences.forEach((elem) => elem.remove());
+    experiences.forEach((elem, idx) => {
+        if (idx) elem.remove();  // keep the first experience form
+    });
     document.getElementById('form-profile-image').src = "";
+
     form.style.display = 'none';
     mainContent.style.display = 'block';
 }
@@ -75,12 +78,14 @@ export function prefillFormData(employee) {
     // profile img
     document.getElementById('form-profile-image').src = employee.photo;
     // add experiences
+    let firstExperience = 1;
     for (let experience of employee.experience) {
-        const newExperienceForm = addExperienceForm();
+        const newExperienceForm = firstExperience ? form.querySelector('.experience-form') : addExperienceForm();
         const currentExperienceInputs = newExperienceForm.querySelectorAll('input, textarea');
         currentExperienceInputs.forEach(input => {
             input.value = experience[input.name];
         });
+        firstExperience = 0;
     }
 }
  
@@ -106,4 +111,10 @@ addExperienceButton.addEventListener('click', (event) => {
     console.log("add experience clicked");
     event.preventDefault();
     addExperienceForm();
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+    const experienceForm = addExperienceForm();
+    // first experience form| remove the delete option
+    experienceForm.lastElementChild.remove();
 });
