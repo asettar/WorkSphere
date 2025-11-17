@@ -20,13 +20,12 @@ function    addErrorMessage(message) {
 function    addError(input, errorMsg) {
     input.style["border-color"] = 'red';
     const parent = input.parentElement;
-    const error = input.nextElementSibling;
-
+    let error = input.nextElementSibling;
+    if (error) error.remove();
+    
     // add an error
-    if (!error) {
-        const error = addErrorMessage(errorMsg);
-        parent.appendChild(error);
-    }
+    error = addErrorMessage(errorMsg);
+    parent.appendChild(error);
     input.focus();
 }
 
@@ -93,13 +92,59 @@ function    isValidDescriptions() {
     return true;
 }
 
-export  function    isValidDate() {
+function    isValidDateOrder(startDate, endDate) {
+    if (!startDate.value || !endDate.value) return true;
+    
+    // console.log(startDate.value, endDate.value, typeof endDate.value[0]);
+    let startValues = startDate.value.split('-').map(e => parseInt(e));
+    let endValues = endDate.value.split('-').map(e => parseInt(e));
+    console.log(startValues, endValues);
+
+    let isValid = false;
+    for (let i = 0; i < 3; i++) {
+        if (startValues[i] > endValues[i]) break;
+        else if (startValues[i] < endValues[i]) {
+            isValid = true;
+            break;
+        }
+    }
+    // bad Order -> update style and add error;
+    if (isValid) updateStyleOnSuccess(endDate)
+    else addError(endDate, "end date should be greater than end date");
+    return isValid;
+}
+
+export  function    isValidDate(dateInput, startDate, endDate) {
+    let isValid = true;
+    if (!dateInput.value) isValid = false;
+    else {
+        const dates = dateInput.value.split('-').map(e => parseInt(e));
+        console.log(dates);
+        if (dates[0] > 2025 || dates[1] > 12 || dates[2] > 31) isValid = false;
+    }
+    console.log(isValid);
+    if (!isValid) addError(dateInput, "Invalid date.");
+    else  isValid = isValidDateOrder(startDate, endDate);
+    console.log(isValid);
+    if (isValid) updateStyleOnSuccess(dateInput);
+    return isValid;
+}
+
+
+function    isValidDates() {
+    const startDates = form.querySelectorAll('.experience-start-date');
+    const endDates = form.querySelectorAll('.experience-end-date');
+
+    for (let i = 0; i < startDates.length; i++) {
+        if (!isValidDate(startDates[i], startDates[i], endDates[i]) || !isValidDate(endDates[i], startDates[i], endDates[i]))
+            return false;
+    }
     return true;
 }
 
 export function isValidForm() {
     return (isValidName() && isValidPhoneNumber() && isValidEmail() && isValidPicture()
-        && isValidDescriptions());
+        && isValidDates() && isValidDescriptions());
 }
 
 

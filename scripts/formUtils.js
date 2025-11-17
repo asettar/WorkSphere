@@ -29,12 +29,12 @@ function    deleteExperience(experienceCard) {
 function    addNewExperienceEvents(newExperience) {
     const deleteBtn = newExperience.querySelector('.delete-experience');
     const description = newExperience.querySelector('textarea');
-    // const startDate = newExperience.querySelector('.experience-start-date');
-    // const endDate = newExperience.querySelector('.experience-end-date');
+    const startDate = newExperience.querySelector('.experience-start-date');
+    const endDate = newExperience.querySelector('.experience-end-date');
 
     description.addEventListener('input', () => isValidDescription(description));
-    // startDate.addEventListener('input', isValidDate);
-    // endDate.addEventListener('input', isValidDate);
+    startDate.addEventListener('input', () => isValidDate(startDate, startDate, endDate));
+    endDate.addEventListener('input', () => isValidDate(endDate, startDate, endDate));
     deleteBtn.addEventListener('click', () => deleteExperience(newExperience));
 }
 
