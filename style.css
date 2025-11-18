@@ -59,19 +59,18 @@ body {
 #add-btn {
     background-color: rgb(39, 39, 39);;
     color: white;
-    width: 5rem;
     font-size: 1rem;
     border: none;
     cursor: pointer;
 }
 #search-input {
-    width: 13rem;
     border-color: rgb(39, 39, 39);;;
 }
 .search-add {
     margin-top: 1em;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    gap:1em;
 }
 
 .unassigned-container h2 {
@@ -89,7 +88,6 @@ body {
     background-color: #fff;
     cursor: pointer;
     align-self: flex-end;
-    width: 66%;
 }
 
 .role-filter-container {
@@ -256,6 +254,8 @@ textarea:focus {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 10% 90%;
+    gap: 5px;
+    position: relative;
 }
 
 #conference-room {
@@ -267,6 +267,8 @@ textarea:focus {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 10% 90%;
+    gap: 5px;
+    position: relative;
 }
 
 #server-room {
@@ -275,6 +277,11 @@ textarea:focus {
     border: 3.5px solid blue;
     border-radius: 0.5em;
     padding : 0.5vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% 90%;
+    gap: 5px;
+    position: relative;
 }
 
 #security-room {
@@ -283,6 +290,7 @@ textarea:focus {
     border: 3.5px solid darkcyan;
     border-radius: 0.5em;
     padding : 0.5vw;
+    position: relative;
 }
 
 #staff-room {
@@ -291,6 +299,7 @@ textarea:focus {
     border: 3.5px solid yellowgreen;
     border-radius: 0.5em;
     padding : 0.5vw;
+    position: relative;
 }
 
 #archive-room {
@@ -299,16 +308,12 @@ textarea:focus {
     border: 3.5px solid burlywood;
     border-radius: 0.5em;
     padding : 0.5vw;
+    position: relative;
 }
 
 .rooms-container h4 {
     font-size: clamp(14px, 1.1rem, 18px);
     text-align: center;
-}
-.normal-room-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5em;
 }
 
 .room-card {
@@ -337,13 +342,24 @@ textarea:focus {
 }
 
 
-.rooms-container img  { /*remove btn*/
+
+.delete-employee-room  { /*remove btn*/
     width: clamp(20px, 1.7vw, 30px);
     height: clamp(20px, 1.7vw, 30px);
     border-radius: 50%;
     position: absolute;
     top: -5px;
     right: -5px;
+}
+
+.add-employee-room {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    cursor: pointer;
+    top: 0px;
+    right: 0px;
+    margin-left: 10px;
 }
 
 .employee-room-card .name {
@@ -363,10 +379,13 @@ textarea:focus {
     font-weight: 500;
 }
 
-@media screen and (max-width : 800px) {
-    body {
-        grid-template-columns: 1fr;
-    }
+.normal-room .employee-room-card {
+    flex: 0 0 calc(50% - 0.5em) !important; 
+    max-width: min(60px,  calc(50% - 0.5em)) !important;
+    /* max-height: 60px; */
+}
+
+@media screen and (max-width: 1023px) {
     .rooms-container {
         grid-template-columns: repeat(8, 1fr);
         grid-template-rows: repeat(12, 1fr);
@@ -399,6 +418,23 @@ textarea:focus {
     #archive-room {
         grid-column: 6 / 9;
         grid-row: 10 / 13;
+    }
+    .employee-room-card {
+        max-height: 50px;
+        max-width: 70px;
+    }
+    h4 {
+        text-align: left !important;
+        font-size: 16px !important;
+    }
+}
+
+@media screen and (max-width : 767px) {
+    body {
+        grid-template-columns: 1fr;
+    }
+    h4{
+        font-size: 12px !important;
     }
 }
 
