@@ -1,4 +1,4 @@
-import {editEmployee, viewEmployee, deleteEmployee} from "./crud.js"
+import {editEmployee, viewEmployee, deleteEmployee} from "./unassignedCrud.js"
 
 
 const   unassignedContainer = document.getElementById('employees-container');
