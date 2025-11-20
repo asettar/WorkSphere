@@ -25,11 +25,24 @@ function    isAvailableRole(employeeRole, roomData) {
     return roomData.availablesRoles.includes(employeeRole);
 }
 
+function    addEmployeeSelectionEvent(employeeCard, employeeData) {
+    // 'selected-employee' class to emplyeecard
+    if (employeeCard.classList.contains('selected-employee')) {
+        employeeCard.classList.remove('selected-employee');
+        currentSelectedEmployees = currentSelectedEmployees.filter(elem => elem.id !== employeeData.id);
+    }
+
+    else {
+        employeeCard.classList.add('selected-employee');
+        currentSelectedEmployees.push(employeeData.id);
+    }
+}
 
 function    addAvailableEmployee(employee) {
     let availableEmployee = createAvailableEmployeeCard(employee);
     popUpEmployeescontainer.appendChild(availableEmployee);
     // add selection event
+    availableEmployee.addEventListener('click',  () => addEmployeeSelectionEvent(availableEmployee, employee));
 }
 
 
@@ -39,8 +52,6 @@ function showAvailablesEmployees(roomData) {
             addAvailableEmployee(employee);
     }
 }
-
-
 
 function    addSelectedEmployees() {
     console.log("room confirm clicked");
