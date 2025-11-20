@@ -8,7 +8,7 @@ const pictureInput = document.getElementById('picture-input');
 
 
 // errors styles updates
-function    addErrorMessage(message) {
+export function    addErrorMessage(message) {
     const error = document.createElement('p');
     error.innerHTML = message; 
     error.style.color = 'red';

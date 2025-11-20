@@ -1,4 +1,5 @@
 import {addUnassignedEmployee} from "./cardsCreation.js"
+import {addEmployeeToRoom} from "./roomsCrud.js"
 
 const demoEmployees = [
   {
@@ -30,11 +31,47 @@ const demoEmployees = [
   {
     id: 3,
     name: "Hicham Amrani",
-    role: "Cleaning Staff",
-    photo: "https://i.pravatar.cc/150?img=5",
+    role: "Security Officer",
+    photo: "https://i.pravatar.cc/150?img=11",
     email: "hicham.amrani@example.com",
     phone: "+212655667788",
     room: "unassigned",
+    experience: [
+      { post: "Customer assistance", company : "Jesa", startDate: "2022-03-01", endDate: "2023-01-01", Description: "description" }
+    ]
+  },
+  {
+    id: 4,
+    name: "Hicham hamid",
+    role: "Manager",
+    photo: "https://i.pravatar.cc/150?img=20",
+    email: "hicham.amrani@example.com",
+    phone: "+212655667788",
+    room: "archive-room",
+    experience: [
+      { post: "Customer assistance", company : "Jesa", startDate: "2022-03-01", endDate: "2023-01-01", Description: "description" }
+    ]
+  },
+   {
+    id: 5,
+    name: "Hicham sara",
+    role: "Manager",
+    photo: "https://i.pravatar.cc/150?img=19",
+    email: "hicham.amrani@example.com",
+    phone: "+212655667788",
+    room: "reception-room",
+    experience: [
+      { post: "Customer assistance", company : "Jesa", startDate: "2022-03-01", endDate: "2023-01-01", Description: "description" }
+    ]
+  },
+  {
+    id: 6,
+    name: "Hicham hamid",
+    role: "Manager",
+    photo: "https://i.pravatar.cc/150?img=15",
+    email: "hicham.amrani@example.com",
+    phone: "+212655667788",
+    room: "archive-room",
     experience: [
       { post: "Customer assistance", company : "Jesa", startDate: "2022-03-01", endDate: "2023-01-01", Description: "description" }
     ]
@@ -46,32 +83,32 @@ export let employeesData = JSON.parse(localStorage.getItem('employees')
 
 export let rooms = {
   "reception-room" : {
-    currentEmployees : [],  // list of ids of current employees
+    currentEmployees : 0,  // cnt Of current employees in room 
     maxEmployees : 6,
     availablesRoles : ['Manager', 'Cleaning Staff', 'Receptionist']  // array of valid roles that can join
   },
   "conference-room" : {
-    currentEmployees : [],
+    currentEmployees : 0,
     maxEmployees : 8,
     availablesRoles : ['Manager', 'Cleaning Staff', 'Security Officer', 'IT Technician', 'Receptionist', 'other']
   },
   "server-room" : {
-    currentEmployees : [],
+    currentEmployees : 0,
     maxEmployees : 4,
     availablesRoles : ['Manager', 'Cleaning Staff', 'IT Technician']
   },
   "security-room" : {
-    currentEmployees : [],
+    currentEmployees : 0,
     maxEmployees : 4,
     availablesRoles : ['Manager', 'Cleaning Staff', 'Security Officer']
   },
   "staff-room" : {
-    currentEmployees : [],
+    currentEmployees : 0,
     maxEmployees : 4,
     availablesRoles : ['Manager', 'Security Officer', 'IT Technician', 'Receptionist', 'other', 'Cleaning Staff']
   },
   "archive-room" : {
-    currentEmployees : [],
+    currentEmployees : 0,
     maxEmployees : 4,
     availablesRoles : ['Manager', 'Security Officer', 'IT Technician', 'Receptionist', 'other']
   },
@@ -99,7 +136,7 @@ function    renderEmployeesCards() {
         if (isUnassignedEmpolyee(employee))
             addUnassignedEmployee(employee);
         else {
-            // assign to it's room
+            addEmployeeToRoom(employee, employee.room);
         }
     }
 };
