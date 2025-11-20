@@ -17,10 +17,6 @@ function    closePopup() {
     popUpEmployeescontainer.innerHTML = '';
 }
 
-function    isUnassignedEmpolyee(employee) {
-    return (employee.room === "unassigned");
-}
-
 function    isAvailableRole(employeeRole, roomData) {
     return roomData.availablesRoles.includes(employeeRole);
 }
@@ -46,7 +42,7 @@ function    addEmployeeSelectionEvent(employeeCard, employeeData) {
             employeeCard.after(error);
             setTimeout(() => {
                 error.remove();
-            }, 1200);
+            }, 1400);
             return ;
         }
         employeeCard.classList.add('selected-employee');
@@ -64,7 +60,7 @@ function    addAvailableEmployee(employee) {
 
 function showAvailablesEmployees(roomData) {
     for (let employee of employeesData) {
-        if (isUnassignedEmpolyee(employee) && isAvailableRole(employee.role, roomData))
+        if (isAvailableRole(employee.role, roomData))
             addAvailableEmployee(employee);
     }
 }
@@ -74,31 +70,34 @@ function    removeUnassignedEmployee(employee) {
     unassignedCard.remove();
 }
 
-function    removeEmployeeFromRoom(employeeCard, emoplyeeData) {
+function    removeEmployeeFromRoom(employeeCard) {
     employeeCard.remove();
-    addUnassignedEmployee(emoplyeeData);
     rooms[currentRoom].currentEmployees--;
 }
 
 export function    addEmployeeToRoom(employee, roomName) {
     const employeesContainer = document.getElementById(roomName).querySelector('.room-card'); 
-    const roomEmployee = createRoomEmployeeCard(employee);
+    const employeeCard = createRoomEmployeeCard(employee);
     
-    employeesContainer.appendChild(roomEmployee);
+    employeesContainer.appendChild(employeeCard);
     employee.room = roomName; // change it's room in data
     rooms[roomName].currentEmployees++;
 
     // deletion event
-    const deleteBtn = roomEmployee.querySelector('.delete-employee-room'); 
-    deleteBtn.addEventListener('click', () => removeEmployeeFromRoom(roomEmployee, employee));
+    const deleteBtn = employeeCard.querySelector('.delete-employee-room'); 
+    deleteBtn.addEventListener('click', () => {
+        removeEmployeeFromRoom(employeeCard);
+        addUnassignedEmployee(employee);
+    });
 }
 
 
 function    addSelectedEmployees() {
 
     for (let employee of currentSelectedEmployees) {
-        // remove from unassigned part
-        removeUnassignedEmployee(employee);
+        if (employee.room === "unassigned") removeUnassignedEmployee(employee);
+        else removeEmployeeFromRoom(document.getElementById(`room-employee${employee.id}`));
+        
         // add to room
         addEmployeeToRoom(employee, currentRoom);
     }

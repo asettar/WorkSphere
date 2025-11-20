@@ -57,6 +57,7 @@ export function createAvailableEmployeeCard(employee) {
 export function createRoomEmployeeCard(employee) {
     let roomEmployee = document.createElement('div');
     roomEmployee.classList.add('employee-room-card');
+    roomEmployee.id = `room-employee${employee.id}`;
     roomEmployee.innerHTML = `
         <img src="Images/delete.png" class = "delete-employee-room" alt="">
         <div class = "name">${employee.name}</div>
