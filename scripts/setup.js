@@ -44,6 +44,38 @@ const demoEmployees = [
 export let employeesData = JSON.parse(localStorage.getItem('employees')
                     || JSON.stringify(demoEmployees));
 
+export let rooms = {
+  "reception-room" : {
+    currentEmployees : [],  // list of ids of current employees
+    maxEmployees : 6,
+    availablesRoles : ['Manager', 'Cleaning Staff', 'Receptionist']  // array of valid roles that can join
+  },
+  "conference-room" : {
+    currentEmployees : [],
+    maxEmployees : 8,
+    availablesRoles : ['Manager', 'Cleaning Staff', 'other']
+  },
+  "server-room" : {
+    currentEmployees : [],
+    maxEmployees : 4,
+    availablesRoles : ['Manager', 'Cleaning Staff', 'IT Technician']
+  },
+  "security-room" : {
+    currentEmployees : [],
+    maxEmployees : 4,
+    availablesRoles : ['Manager', 'Cleaning Staff', 'Security Officer']
+  },
+  "staff-room" : {
+    currentEmployees : [],
+    maxEmployees : 4,
+    availablesRoles : ['Manager', 'Cleaning Staff', 'other']
+  },
+  "archive-room" : {
+    currentEmployees : [],
+    maxEmployees : 4,
+    availablesRoles : ['Manager', 'other']
+  },
+};
 
 console.log(employeesData);
 

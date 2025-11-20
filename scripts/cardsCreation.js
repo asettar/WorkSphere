@@ -8,7 +8,7 @@ function    createNewaUnassignedCard(employee) {
     newUnassignedCard.classList.add('employee-card');
     newUnassignedCard.innerHTML = `
         <img class = "profile-icon" src="${employee.photo}" alt="">
-        <div class = "name-role">
+        <div class = "name-role" id = "unassigned-employee${employee.id}">
             <span>${employee.name}</span>
             <br>
             <span>${employee.role}</span>
