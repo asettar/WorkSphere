@@ -127,7 +127,6 @@
         </div>
         <div id = "conference-room">
             <img src="Images/add-icon.png" class = "add-employee-room">
-            <img src="Images/add-icon.png" class = "add-employee-room">
             <h4> Conference room </h4>
             <div class = "room-card">
                 <div class = "employee-room-card">
@@ -195,7 +194,7 @@
     <section id = "room-popup-section">
         <div id = "room-popup">
             <h3>Availabe unassigned Employees</h3>
-            <div id = "employees-container">
+            <div class = "room-employees-container">
                 <div class="employee-card">
                     <img class = "profile-icon" src="https://cdn-icons-png.flaticon.com/512/12225/12225935.png" alt="">
                     <div class = "name-role">
@@ -212,7 +211,7 @@
                         <span>Role</span>
                     </div>
                 </div>
-                <div class="employee-card">
+                <div class="employee-card selected-employee">
                     <img class = "profile-icon" src="https://cdn-icons-png.flaticon.com/512/12225/12225935.png" alt="">
                     <div class = "name-role">
                         <span>Name</span>
@@ -223,7 +222,7 @@
             </div>
             <div id="confirm-cancel-rooms">
                 <button id = "cancel-btn-room"> Cancel</button>
-                <button type="submit" id = "confirm-btn-room">Confirm</button>
+                <button id = "confirm-btn-room">Confirm</button>
             </div>
         </div>
     </section>
@@ -234,5 +233,6 @@
     <script type = "module" src = "scripts/formUtils.js"></script>
     <script type = "module" src = "scripts/formValidate.js"></script>
     <script type = "module" src = "scripts/search&Filters.js"></script>
+    <script type = "module" src = "scripts/roomsCrud.js"></script>
 </body>
 </html>

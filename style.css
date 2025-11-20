@@ -32,7 +32,8 @@ body {
     height: 95vh;
 }
 
-#employees-container {
+#employees-container,
+.room-employees-container{
     display: flex;
     flex-direction: column;
     gap: 1em;
@@ -390,7 +391,8 @@ textarea:focus {
 
 #room-popup-section {
     position: fixed;
-    display: flex;
+    /* display: flex; */
+    display: none;
     align-items : center;
     justify-content: center;
     width: 100%;
@@ -425,6 +427,11 @@ textarea:focus {
 
 #confirm-cancel-rooms {
     margin-top: 1em;
+}
+
+.selected-employee {
+    /* background-color: red; */
+    border: 3px solid rgb(8, 102, 133);
 }
 
 @media screen and (max-width: 1023px) {
