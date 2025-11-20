@@ -53,7 +53,7 @@ export let rooms = {
   "conference-room" : {
     currentEmployees : [],
     maxEmployees : 8,
-    availablesRoles : ['Manager', 'Cleaning Staff', 'other']
+    availablesRoles : ['Manager', 'Cleaning Staff', 'Security Officer', 'IT Technician', 'Receptionist', 'other']
   },
   "server-room" : {
     currentEmployees : [],
@@ -68,12 +68,12 @@ export let rooms = {
   "staff-room" : {
     currentEmployees : [],
     maxEmployees : 4,
-    availablesRoles : ['Manager', 'Cleaning Staff', 'other']
+    availablesRoles : ['Manager', 'Security Officer', 'IT Technician', 'Receptionist', 'other', 'Cleaning Staff']
   },
   "archive-room" : {
     currentEmployees : [],
     maxEmployees : 4,
-    availablesRoles : ['Manager', 'other']
+    availablesRoles : ['Manager', 'Security Officer', 'IT Technician', 'Receptionist', 'other']
   },
 };
 

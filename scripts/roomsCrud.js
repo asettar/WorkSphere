@@ -5,7 +5,7 @@ const popUpSection = document.getElementById('room-popup-section')
 const popUpEmployeescontainer = popUpSection.querySelector('.room-employees-container')
 const popupConfirmBtn = document.getElementById('confirm-btn-room');
 const popupCancelBtn = document.getElementById('cancel-btn-room');
-let   currentRoom, currentSelectedEmployees = [];  // to track selected employees on addition event 
+let   currentRoom = null, currentSelectedEmployees = [];  // to track selected employees on addition event 
 
 function    showPopup() {
     console.log("dewpfefowpe");
@@ -33,8 +33,9 @@ function    addEmployeeSelectionEvent(employeeCard, employeeData) {
     }
 
     else {
+        // todo: check if max is reached
         employeeCard.classList.add('selected-employee');
-        currentSelectedEmployees.push(employeeData.id);
+        currentSelectedEmployees.push(employeeData);
     }
 }
 
@@ -53,12 +54,17 @@ function showAvailablesEmployees(roomData) {
     }
 }
 
+function    removeUnassignedEmployee(employee) {
+    const unassignedCard = document.getElementById(`unassigned-employee${employee.id}`);
+    unassignedCard.remove();
+}
+
 function    addSelectedEmployees() {
-    console.log("room confirm clicked");
-    // console.log(currentRoom);
-    // console.log("currentSelectedEmployees");
-    for (let employee of employees) {
-    
+    for (let employee of currentSelectedEmployees) {
+        // remove from unassigned part
+        removeUnassignedEmployee(employee);
+        // add to room
+        // addEmployeeToRoom(employee);
     }
 }
 
@@ -87,5 +93,8 @@ for (let [roomName, roomData] of Object.entries(rooms)) {
 
 
 // event
-popupConfirmBtn.addEventListener('click', addSelectedEmployees);
+popupConfirmBtn.addEventListener('click', () => {
+    addSelectedEmployees();
+    closePopup();
+});
 popupCancelBtn.addEventListener('click', closePopup);
