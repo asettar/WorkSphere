@@ -6,9 +6,10 @@ const   unassignedContainer = document.getElementById('employees-container');
 function    createNewaUnassignedCard(employee) {
     const newUnassignedCard = document.createElement('div');
     newUnassignedCard.classList.add('employee-card');
+    newUnassignedCard.id = `unassigned-employee${employee.id}`;  // to easily remove if I need to
     newUnassignedCard.innerHTML = `
         <img class = "profile-icon" src="${employee.photo}" alt="">
-        <div class = "name-role" id = "unassigned-employee${employee.id}">
+        <div class = "name-role">
             <span>${employee.name}</span>
             <br>
             <span>${employee.role}</span>
@@ -35,4 +36,19 @@ export function    addUnassignedEmployee(employee) {
     const newUnassignedCard = createNewaUnassignedCard(employee);
     addUnassignedCardEvents(newUnassignedCard, employee);
     unassignedContainer.appendChild(newUnassignedCard);
+}
+
+
+export function createAvailableEmployeeCard(employee) {
+    const availableEmployee = document.createElement('div');
+    availableEmployee.classList.add('employee-card');
+    availableEmployee.innerHTML = `
+        <img class = "profile-icon" src="${employee.photo}" alt="">
+        <div class = "name-role">
+            <span>${employee.name}</span>
+            <br>
+            <span>${employee.role}</span>
+        </div>
+    `;
+    return availableEmployee;
 }

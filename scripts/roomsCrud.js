@@ -1,41 +1,67 @@
 import { rooms, employeesData} from "./setup.js";
+import {createAvailableEmployeeCard} from './cardsCreation.js'
 
 const popUpSection = document.getElementById('room-popup-section')
+const popUpEmployeescontainer = popUpSection.querySelector('.room-employees-container')
 const popupConfirmBtn = document.getElementById('confirm-btn-room');
 const popupCancelBtn = document.getElementById('cancel-btn-room');
-let currentRoom, currentSelectedEmployees = [];  // to track selected employees on addition event 
+let   currentRoom, currentSelectedEmployees = [];  // to track selected employees on addition event 
 
 function    showPopup() {
     console.log("dewpfefowpe");
     popUpSection.style.display = 'flex';
 }
 
-function    showAvailablesEmployees() {
-
-}
-
 function    closePopup() {
     popUpSection.style.display = 'none';
-    popUpSection.querySelector('.room-employees-container').innerHTML = "";
+    popUpEmployeescontainer.innerHTML = '';
 }
+
+function    isUnassignedEmpolyee(employee) {
+    return (employee.room === "unassigned");
+}
+
+function    isAvailableRole(employeeRole, roomData) {
+    return roomData.availablesRoles.includes(employeeRole);
+}
+
+
+function    addAvailableEmployee(employee) {
+    let availableEmployee = createAvailableEmployeeCard(employee);
+    popUpEmployeescontainer.appendChild(availableEmployee);
+    // add selection event
+}
+
+
+function showAvailablesEmployees(roomData) {
+    for (let employee of employeesData) {
+        if (isUnassignedEmpolyee(employee) && isAvailableRole(employee.role, roomData))
+            addAvailableEmployee(employee);
+    }
+}
+
+
 
 function    addSelectedEmployees() {
     console.log("room confirm clicked");
-    console.log(currentRoom);
-    console.log("currentSelectedEmployees");
-
+    // console.log(currentRoom);
+    // console.log("currentSelectedEmployees");
+    for (let employee of employees) {
+    
+    }
 }
 
-function    addRoomAdditionButtonEvent(roomCard, roomData) {
+function    addRoomAdditionButtonEvent(roomCard, roomData, roomName) {
     const additionButton = roomCard.querySelector('.add-employee-room');
    
     additionButton.addEventListener('click', () => {
         //todo message if max is attended and return
+        currentRoom = roomName;
+        currentSelectedEmployees = [];
         showPopup();
-        showAvailablesEmployees();
+        showAvailablesEmployees(roomData);
     })
 }
-
 
 for (let [roomName, roomData] of Object.entries(rooms)) {
     const roomCard = document.getElementById(roomName);
