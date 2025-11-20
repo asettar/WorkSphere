@@ -58,9 +58,13 @@ function    addAvailableEmployee(employee) {
 }
 
 
+function    employeeAlreadyInRoom(employee) {
+    return (employee.room === currentRoom);
+}
+
 function showAvailablesEmployees(roomData) {
     for (let employee of employeesData) {
-        if (isAvailableRole(employee.role, roomData))
+        if (isAvailableRole(employee.role, roomData) && !employeeAlreadyInRoom(employee))
             addAvailableEmployee(employee);
     }
 }
@@ -70,9 +74,9 @@ function    removeUnassignedEmployee(employee) {
     unassignedCard.remove();
 }
 
-function    removeEmployeeFromRoom(employeeCard) {
+function    removeEmployeeFromRoom(employeeCard, roomName) {
     employeeCard.remove();
-    rooms[currentRoom].currentEmployees--;
+    rooms[roomName].currentEmployees--;
 }
 
 export function    addEmployeeToRoom(employee, roomName) {
@@ -86,7 +90,7 @@ export function    addEmployeeToRoom(employee, roomName) {
     // deletion event
     const deleteBtn = employeeCard.querySelector('.delete-employee-room'); 
     deleteBtn.addEventListener('click', () => {
-        removeEmployeeFromRoom(employeeCard);
+        removeEmployeeFromRoom(employeeCard, roomName);
         addUnassignedEmployee(employee);
     });
 }
@@ -96,7 +100,7 @@ function    addSelectedEmployees() {
 
     for (let employee of currentSelectedEmployees) {
         if (employee.room === "unassigned") removeUnassignedEmployee(employee);
-        else removeEmployeeFromRoom(document.getElementById(`room-employee${employee.id}`));
+        else removeEmployeeFromRoom(document.getElementById(`room-employee${employee.id}`), employee.room);
         
         // add to room
         addEmployeeToRoom(employee, currentRoom);
