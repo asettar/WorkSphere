@@ -348,6 +348,7 @@ textarea:focus {
 
 
 .delete-employee-room  { /*remove btn*/
+    cursor: pointer;
     width: clamp(20px, 1.7vw, 30px);
     height: clamp(20px, 1.7vw, 30px);
     border-radius: 50%;

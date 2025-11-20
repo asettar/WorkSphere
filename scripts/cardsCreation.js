@@ -55,6 +55,11 @@ export function createAvailableEmployeeCard(employee) {
     return availableEmployee;
 }
 
+function    removeEmployeeFromRoom(employeeCard, emoplyeeData) {
+    employeeCard.remove();
+    addUnassignedEmployee(emoplyeeData);
+}
+
 export function createRoomEmployeeCard(employee) {
     let roomEmployee = document.createElement('div');
     roomEmployee.classList.add('employee-room-card');
@@ -64,6 +69,7 @@ export function createRoomEmployeeCard(employee) {
     `;
     // set image background
     roomEmployee.style.backgroundImage = `url(${employee.photo})`;
-    // todo : add delete btn event
+    const deleteBtn = roomEmployee.querySelector('.delete-employee-room'); 
+    deleteBtn.addEventListener('click', () => removeEmployeeFromRoom(roomEmployee, employee));
     return roomEmployee;
 }
