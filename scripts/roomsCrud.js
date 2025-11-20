@@ -1,5 +1,5 @@
 import { rooms, employeesData} from "./setup.js";
-import {createAvailableEmployeeCard} from './cardsCreation.js'
+import {createAvailableEmployeeCard, createRoomEmployeeCard} from './cardsCreation.js'
 
 const popUpSection = document.getElementById('room-popup-section')
 const popUpEmployeescontainer = popUpSection.querySelector('.room-employees-container')
@@ -59,12 +59,22 @@ function    removeUnassignedEmployee(employee) {
     unassignedCard.remove();
 }
 
+function    addEmployeeToRoom(employee, employeesContainer) {
+    employee.room = currentRoom;  // change it's room in data
+    const roomEmployee = createRoomEmployeeCard(employee);
+    employeesContainer.appendChild(roomEmployee);
+}
+
 function    addSelectedEmployees() {
+    console.log(currentRoom);
+    const employeesContainer = document.getElementById(currentRoom).querySelector('.room-card'); 
+    console.log(employeesContainer);
+
     for (let employee of currentSelectedEmployees) {
         // remove from unassigned part
         removeUnassignedEmployee(employee);
         // add to room
-        // addEmployeeToRoom(employee);
+        addEmployeeToRoom(employee, employeesContainer);
     }
 }
 
@@ -87,7 +97,7 @@ for (let [roomName, roomData] of Object.entries(rooms)) {
     // updateRoomStyle();
     // additionEvent
     // console.log(roo)
-    addRoomAdditionButtonEvent(roomCard, roomData);
+    addRoomAdditionButtonEvent(roomCard, roomData, roomName);
 }
 
 

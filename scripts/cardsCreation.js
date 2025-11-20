@@ -36,6 +36,8 @@ export function    addUnassignedEmployee(employee) {
     const newUnassignedCard = createNewaUnassignedCard(employee);
     addUnassignedCardEvents(newUnassignedCard, employee);
     unassignedContainer.appendChild(newUnassignedCard);
+    // change emoplyee room in case coming from remove from room
+    employee.room = 'unassigned';
 }
 
 
@@ -51,4 +53,17 @@ export function createAvailableEmployeeCard(employee) {
         </div>
     `;
     return availableEmployee;
+}
+
+export function createRoomEmployeeCard(employee) {
+    let roomEmployee = document.createElement('div');
+    roomEmployee.classList.add('employee-room-card');
+    roomEmployee.innerHTML = `
+        <img src="Images/delete.png" class = "delete-employee-room" alt="">
+        <div class = "name">${employee.name}</div>
+    `;
+    // set image background
+    roomEmployee.style.backgroundImage = `url(${employee.photo})`;
+    // todo : add delete btn event
+    return roomEmployee;
 }
