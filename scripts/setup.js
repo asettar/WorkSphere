@@ -19,7 +19,7 @@ const demoEmployees = [
     id: 2,
     name: "Sara Benali",
     role: "Receptionist",
-    photo: "https://i.pravatar.cc/150?img=2",
+    photo: "https://i.pravatar.cc/150?img=45",
     email: "sara.benali@example.com",
     phone: "+212622334455",
     room: "unassigned",
@@ -32,7 +32,7 @@ const demoEmployees = [
     id: 3,
     name: "Hicham Amrani",
     role: "Security Officer",
-    photo: "https://i.pravatar.cc/150?img=11",
+    photo: "https://i.pravatar.cc/150?img=13",
     email: "hicham.amrani@example.com",
     phone: "+212655667788",
     room: "unassigned",
@@ -44,7 +44,7 @@ const demoEmployees = [
     id: 4,
     name: "Hicham hamid",
     role: "Manager",
-    photo: "https://i.pravatar.cc/150?img=20",
+    photo: "https://i.pravatar.cc/150?img=14",
     email: "hicham.amrani@example.com",
     phone: "+212655667788",
     room: "archive-room",
@@ -56,7 +56,7 @@ const demoEmployees = [
     id: 5,
     name: "Hicham sara",
     role: "Manager",
-    photo: "https://i.pravatar.cc/150?img=19",
+    photo: "https://i.pravatar.cc/150?img=35",
     email: "hicham.amrani@example.com",
     phone: "+212655667788",
     room: "reception-room",
@@ -118,13 +118,13 @@ console.log(employeesData);
 
 export  function    removeEmployeeData(employee) {
     employeesData = employeesData.filter((elem) => elem.id !== employee.id);
-    // todo: updateLocalStorage
+    localStorage.setItem('employees', JSON.stringify(employeesData));
 }
 
 export  function    addNewEmployeeData(employee) {
     employeesData.push(employee);
     addUnassignedEmployee(employee);
-    // todo : update localstorage
+    localStorage.setItem('employees', JSON.stringify(employeesData));
 }
 
 function    isUnassignedEmpolyee(employee) {

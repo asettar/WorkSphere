@@ -93,6 +93,7 @@ export function    addEmployeeToRoom(employee, roomName) {
         removeEmployeeFromRoom(employeeCard, roomName);
         addUnassignedEmployee(employee);
     });
+    localStorage.setItem('employees', JSON.stringify(employeesData));
 }
 
 

@@ -1,4 +1,5 @@
 import {editEmployee, viewEmployee, deleteEmployee} from "./unassignedCrud.js"
+import { employeesData } from "./setup.js";
 
 const   unassignedContainer = document.getElementById('employees-container');
 
@@ -37,6 +38,7 @@ export function    addUnassignedEmployee(employee) {
     unassignedContainer.appendChild(newUnassignedCard);
     // change emoplyee room in case coming from remove from room
     employee.room = 'unassigned';
+    localStorage.setItem('employees', JSON.stringify(employeesData));
 }
 
 

@@ -12,6 +12,7 @@ export function    editEmployee(employee, employeeCard) {
     currentEditCard = employeeCard, currentEditData = employee;
     showForm();
     prefillFormData(employee);
+    // confirm/cancel events will continue 
 }
 
 export function    deleteEmployee(employee, employeeCard) {
@@ -21,7 +22,7 @@ export function    deleteEmployee(employee, employeeCard) {
 }
 
 export function viewEmployee(employee) {
-    console.log("view");
+    // console.log("view E");
 }
 
 function    addNewEmployee() {
@@ -42,7 +43,7 @@ function    updateEmployee() {
         <br>
         <span>${employeeData.role}</span>
     `; 
-    console.log(employeeData);
+    localStorage.setItem('employees', JSON.stringify(employeesData));
 }
 
 const isAdditionMode = () => currentEditCard === null;
