@@ -22,7 +22,8 @@ export function    deleteEmployee(employee, employeeCard) {
 }
 
 export function viewEmployee(employee) {
-    // console.log("view E");
+    console.log("View Employee");
+    
 }
 
 function    addNewEmployee() {
