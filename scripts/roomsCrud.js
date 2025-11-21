@@ -77,6 +77,7 @@ function    removeUnassignedEmployee(employee) {
 function    removeEmployeeFromRoom(employeeCard, roomName) {
     employeeCard.remove();
     rooms[roomName].currentEmployees--;
+    checkRoomStyle(roomName);
 }
 
 export function    addEmployeeToRoom(employee, roomName) {
@@ -94,6 +95,7 @@ export function    addEmployeeToRoom(employee, roomName) {
         addUnassignedEmployee(employee);
     });
     localStorage.setItem('employees', JSON.stringify(employeesData));
+    checkRoomStyle(roomName);  // update color if needed;
 }
 
 
@@ -119,14 +121,24 @@ function    addRoomAdditionButtonEvent(roomCard, roomData, roomName) {
     })
 }
 
+
+function    checkRoomStyle(roomName) {
+    const roomContainer = document.getElementById(roomName);
+    let currentEmployees = rooms[roomName].currentEmployees; 
+    
+
+    console.log(roomName, currentEmployees);
+    if (currentEmployees > 0)
+        roomContainer.style.backgroundColor = 'white';
+    else if (roomName !== "conference-room" && roomName !== "staff-room") 
+        roomContainer.style.backgroundColor = '#f9d0ddff';
+}
+
 window.addEventListener("DOMContentLoaded", () => {
     for (let [roomName, roomData] of Object.entries(rooms)) {
         const roomCard = document.getElementById(roomName);
-        // console.log(roomCard);
         // todo: update style if it is empty(pale color if it is empty)
-        // updateRoomStyle();
-        // additionEvent
-        // console.log(roo)
+        checkRoomStyle(roomName);
         addRoomAdditionButtonEvent(roomCard, roomData, roomName);
     }
 });
