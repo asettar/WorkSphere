@@ -70,7 +70,7 @@ function showAvailablesEmployees(roomData) {
 }
 
 function    removeUnassignedEmployee(employee) {
-    const unassignedCard = document.getElementById(`.employee-card[data-id=${employee.id}]`);
+    const unassignedCard = document.querySelector(`.employee-card[data-id="${employee.id}"]`);
     unassignedCard.remove();
 }
 
@@ -103,7 +103,7 @@ function    addSelectedEmployees() {
 
     for (let employee of currentSelectedEmployees) {
         if (employee.room === "unassigned") removeUnassignedEmployee(employee);
-        else removeEmployeeFromRoom(document.getElementById(`room-employee${employee.id}`), employee.room);
+        else removeEmployeeFromRoom(document.querySelector(`.employee-room-card[data-id="${employee.id}"]`), employee.room);
         
         // add to room
         addEmployeeToRoom(employee, currentRoom);
@@ -141,6 +141,7 @@ function    addRoomDraggingEvent(roomCard, roomName) {
         event.preventDefault();
     });
     roomCard.addEventListener('drop', () => {
+        // to do check room maxcapacity, or employee not allowed to enter -> timer room style update 
         const draggingElement = document.querySelector('.is-dragging');
         const employee = employeesData.find(e => e.id === draggingElement.dataset.id)
         if (employee.room === "unassigned") draggingElement.remove();
