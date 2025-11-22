@@ -49,8 +49,8 @@ function    addNewExperienceEvents(newExperience) {
     post.addEventListener('input', () => isValidCompanyOrPostName(post));
     company.addEventListener('input', () => isValidCompanyOrPostName(company));
     description.addEventListener('input', () => isValidDescription(description));
-    startDate.addEventListener('input', () => isValidDate(startDate, startDate, endDate));
-    endDate.addEventListener('input', () => isValidDate(endDate, startDate, endDate));
+    startDate.addEventListener('change', () => isValidDate(startDate, startDate, endDate));
+    endDate.addEventListener('change', () => isValidDate(endDate, startDate, endDate));
     deleteBtn.addEventListener('click', () => deleteExperience(newExperience));
 }
 

@@ -75,7 +75,6 @@ function    isValidPicture() {
 }
 
 export function isValidDescription(description) {
-    console.log(description);   
     const pattern = /^[a-zA-Z]{4,}$/
     const isValid = pattern.test(description.value);
 
@@ -95,37 +94,24 @@ function    isValidDescriptions() {
 function    isValidDateOrder(startDate, endDate) {
     if (!startDate.value || !endDate.value) return true;
     
-    // console.log(startDate.value, endDate.value, typeof endDate.value[0]);
-    let startValues = startDate.value.split('-').map(e => parseInt(e));
-    let endValues = endDate.value.split('-').map(e => parseInt(e));
-    console.log(startValues, endValues);
-
-    let isValid = false;
-    for (let i = 0; i < 3; i++) {
-        if (startValues[i] > endValues[i]) break;
-        else if (startValues[i] < endValues[i]) {
-            isValid = true;
-            break;
-        }
+    if (endDate.value > startDate.value) {
+        updateStyleOnSuccess(endDate);
+        return true;
     }
-    // bad Order -> update style and add error;
-    if (isValid) updateStyleOnSuccess(endDate)
     else addError(endDate, "end date should be greater than end date");
-    return isValid;
+    return false;
 }
 
 export  function    isValidDate(dateInput, startDate, endDate) {
+    let dateValue = dateInput.value;
     let isValid = true;
-    if (!dateInput.value) isValid = false;
+    if (!dateValue) isValid = false;
     else {
-        const dates = dateInput.value.split('-').map(e => parseInt(e));
-        console.log(dates);
+        const dates = dateValue.split('-').map(e => parseInt(e));
         if (dates[0] > 2025 || dates[1] > 12 || dates[2] > 31) isValid = false;
     }
-    console.log(isValid);
     if (!isValid) addError(dateInput, "Invalid date.");
     else  isValid = isValidDateOrder(startDate, endDate);
-    console.log(isValid);
     if (isValid) updateStyleOnSuccess(dateInput);
     return isValid;
 }

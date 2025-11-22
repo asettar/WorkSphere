@@ -5,6 +5,8 @@ import {isValidForm} from "./formValidate.js";
 const addButton = document.getElementById('add-btn');
 const confirmButton = document.getElementById('confirm-btn');
 const cancelButton = document.getElementById('cancel-btn');
+const viewPopup = document.getElementById('employee-view-section');
+const viewPopupcloseBtn = document.getElementById('close-employee-info');
 let   currentEditCard = null, currentEditData = null;  // to track mode(edit or add)
 
 export function    editEmployee(employee, employeeCard) {
@@ -21,9 +23,33 @@ export function    deleteEmployee(employee, employeeCard) {
     removeEmployeeData(employee);
 }
 
+function    closeViewEmployeePopup() {
+    viewPopup.style.display = 'none';
+    const experienceCards = viewPopup.querySelectorAll('.experience-view');
+    experienceCards.forEach((card, index) => {
+        if (index) card.remove(); // keep first one
+    });
+}
+
 export function viewEmployee(employee) {
-    console.log("View Employee");
-    
+    const employeeValues = viewPopup.querySelectorAll('.employee-info-values p');
+
+    viewPopup.style.display = 'flex';
+    document.getElementById('employee-profile-photo').src = employee.photo; 
+    employeeValues.forEach(p => {
+        p.innerHTML = employee[p.dataset.feild]; 
+    });
+
+    const experienceCard = viewPopup.querySelector('.experience-view');
+
+    for (let i = 0; i < employee.experience.length; i++) {
+        const newExperienceCard = i ? experienceCard.cloneNode(true) : experienceCard;
+        const values = experienceCard.querySelectorAll('.experience-view-values p');
+        values.forEach(p => {
+            p.innerHTML = employee.experience[i][p.dataset.feild];
+        });
+        if (i) experienceCard.parentElement.appendChild(newExperienceCard);
+    }
 }
 
 function    addNewEmployee() {
@@ -50,6 +76,9 @@ function    updateEmployee() {
 const isAdditionMode = () => currentEditCard === null;
 
 // events
+
+viewPopupcloseBtn.addEventListener('click', closeViewEmployeePopup);
+
 addButton.addEventListener('click', () => {
     currentEditCard = null, currentEditData = null;
     showForm();
