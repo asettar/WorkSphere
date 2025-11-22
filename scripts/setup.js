@@ -3,7 +3,7 @@ import {addEmployeeToRoom} from "./roomsCrud.js"
 
 const demoEmployees = [
   {
-    id: 1,
+    id: '1',
     name: "Achraf Settar",
     role: "IT Technician",
     photo: "https://i.pravatar.cc/150?img=1",
@@ -16,7 +16,7 @@ const demoEmployees = [
     ]
   },
   {
-    id: 2,
+    id: '2',
     name: "Sara Benali",
     role: "Receptionist",
     photo: "https://i.pravatar.cc/150?img=45",
@@ -29,7 +29,7 @@ const demoEmployees = [
     ]
   },
   {
-    id: 3,
+    id: '3',
     name: "Hicham Amrani",
     role: "Security Officer",
     photo: "https://i.pravatar.cc/150?img=13",
@@ -41,7 +41,7 @@ const demoEmployees = [
     ]
   },
   {
-    id: 4,
+    id: '4',
     name: "Hicham hamid",
     role: "Manager",
     photo: "https://i.pravatar.cc/150?img=14",
@@ -53,7 +53,7 @@ const demoEmployees = [
     ]
   },
    {
-    id: 5,
+    id: '5',
     name: "Hicham sara",
     role: "Manager",
     photo: "https://i.pravatar.cc/150?img=35",
@@ -65,7 +65,7 @@ const demoEmployees = [
     ]
   },
   {
-    id: 6,
+    id: '6',
     name: "Hicham hamid",
     role: "Manager",
     photo: "https://i.pravatar.cc/150?img=15",
@@ -113,8 +113,6 @@ export let rooms = {
     availablesRoles : ['Manager', 'Security Officer', 'IT Technician', 'Receptionist', 'other']
   },
 };
-
-console.log(employeesData);
 
 export  function    removeEmployeeData(employee) {
     employeesData = employeesData.filter((elem) => elem.id !== employee.id);

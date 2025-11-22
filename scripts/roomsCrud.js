@@ -70,7 +70,7 @@ function showAvailablesEmployees(roomData) {
 }
 
 function    removeUnassignedEmployee(employee) {
-    const unassignedCard = document.getElementById(`unassigned-employee${employee.id}`);
+    const unassignedCard = document.getElementById(`.employee-card[data-id=${employee.id}]`);
     unassignedCard.remove();
 }
 
@@ -87,7 +87,7 @@ export function    addEmployeeToRoom(employee, roomName) {
     employeesContainer.appendChild(employeeCard);
     employee.room = roomName; // change it's room in data
     rooms[roomName].currentEmployees++;
-
+    console.log("add", roomName, rooms[roomName].currentEmployees);
     // deletion event
     const deleteBtn = employeeCard.querySelector('.delete-employee-room'); 
     deleteBtn.addEventListener('click', () => {
@@ -125,6 +125,8 @@ function    addRoomAdditionButtonEvent(roomCard, roomData, roomName) {
 function    checkRoomStyle(roomName) {
     const roomContainer = document.getElementById(roomName);
     let currentEmployees = rooms[roomName].currentEmployees; 
+    console.log("roomStyle", roomName);
+    console.log(currentEmployees);
     
 
     console.log(roomName, currentEmployees);
@@ -134,12 +136,26 @@ function    checkRoomStyle(roomName) {
         roomContainer.style.backgroundColor = '#f9d0ddff';
 }
 
+function    addRoomDraggingEvent(roomCard, roomName) {
+    roomCard.addEventListener('dragover', (event) => {
+        event.preventDefault();
+    });
+    roomCard.addEventListener('drop', () => {
+        const draggingElement = document.querySelector('.is-dragging');
+        const employee = employeesData.find(e => e.id === draggingElement.dataset.id)
+        if (employee.room === "unassigned") draggingElement.remove();
+        else removeEmployeeFromRoom(draggingElement, roomName);
+        addEmployeeToRoom(employee, roomName);
+    })
+}
+
 window.addEventListener("DOMContentLoaded", () => {
     for (let [roomName, roomData] of Object.entries(rooms)) {
         const roomCard = document.getElementById(roomName);
         // todo: update style if it is empty(pale color if it is empty)
         checkRoomStyle(roomName);
         addRoomAdditionButtonEvent(roomCard, roomData, roomName);
+        addRoomDraggingEvent(roomCard, roomName);
     }
 });
 

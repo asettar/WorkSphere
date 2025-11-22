@@ -6,7 +6,7 @@ const   unassignedContainer = document.getElementById('employees-container');
 function    createNewaUnassignedCard(employee) {
     const newUnassignedCard = document.createElement('div');
     newUnassignedCard.classList.add('employee-card');
-    newUnassignedCard.id = `unassigned-employee${employee.id}`;  // to easily remove if I need to
+    newUnassignedCard.dataset.id = employee.id;
     newUnassignedCard.innerHTML = `
         <img class = "profile-icon" src="${employee.photo}" alt="">
         <div class = "name-role">
@@ -20,6 +20,7 @@ function    createNewaUnassignedCard(employee) {
             <img class="delete-btn" src="Images/delete.png" alt="">
         </div>
     `;
+    newUnassignedCard.setAttribute('draggable', 'true');
     return newUnassignedCard;
 }
 function    addUnassignedCardEvents(unassignedCard, employee) {
@@ -30,6 +31,15 @@ function    addUnassignedCardEvents(unassignedCard, employee) {
     editButton.addEventListener('click', () => editEmployee(employee, unassignedCard));
     deleteButton.addEventListener('click', () => deleteEmployee(employee, unassignedCard));
     viewButton.addEventListener('click', () => viewEmployee(employee));
+    console.log('unassigned events')
+    unassignedCard.addEventListener('dragstart', () => {
+        console.log("start dragging");
+        unassignedCard.classList.add('is-dragging');
+    })
+    unassignedCard.addEventListener('dragend', () => {
+        console.log("end dragging");
+        unassignedCard.classList.remove('is-dragging');
+    })
 }
 
 export function    addUnassignedEmployee(employee) {
