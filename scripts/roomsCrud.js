@@ -145,10 +145,11 @@ function    addRoomDraggingEvent(roomCard, roomName) {
         const draggingElement = document.querySelector('.is-dragging');
         const employee = employeesData.find(e => e.id === draggingElement.dataset.id)
         if (employee.room === "unassigned") draggingElement.remove();
-        else removeEmployeeFromRoom(draggingElement, roomName);
+        else removeEmployeeFromRoom(draggingElement, employee.room);
+        
         addEmployeeToRoom(employee, roomName);
     })
-}
+};
 
 window.addEventListener("DOMContentLoaded", () => {
     for (let [roomName, roomData] of Object.entries(rooms)) {

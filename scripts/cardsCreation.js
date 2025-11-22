@@ -31,15 +31,12 @@ function    addUnassignedCardEvents(unassignedCard, employee) {
     editButton.addEventListener('click', () => editEmployee(employee, unassignedCard));
     deleteButton.addEventListener('click', () => deleteEmployee(employee, unassignedCard));
     viewButton.addEventListener('click', () => viewEmployee(employee));
-    console.log('unassigned events')
     unassignedCard.addEventListener('dragstart', () => {
-        console.log("start dragging");
         unassignedCard.classList.add('is-dragging');
-    })
+    });
     unassignedCard.addEventListener('dragend', () => {
-        console.log("end dragging");
         unassignedCard.classList.remove('is-dragging');
-    })
+    });
 }
 
 export function    addUnassignedEmployee(employee) {
@@ -74,6 +71,14 @@ export function createRoomEmployeeCard(employee) {
         <img src="Images/delete.png" class = "delete-employee-room" alt="">
         <div class = "name">${employee.name}</div>
     `;
+    roomEmployee.setAttribute('draggable', true);
+    roomEmployee.addEventListener('dragstart', () => {
+        console.log("start dragging from room");
+        roomEmployee.classList.add('is-dragging');
+    });
+    roomEmployee.addEventListener('dragend', () => {
+        roomEmployee.classList.remove('is-dragging');
+    });
     // set image background
     roomEmployee.style.backgroundImage = `url(${employee.photo})`;
     return roomEmployee;
