@@ -1,12 +1,17 @@
 import {employeesData, removeEmployeeData, addNewEmployeeData} from './setup.js';
 import {showForm, prefillFormData, resetAndCloseForm, getEmployeeData} from './formUtils.js';
 import {isValidForm} from "./formValidate.js";
+import {removeEmployeeFromRoom} from './roomsCrud.js'; 
+import {addUnassignedEmployee} from './cardsCreation.js';
 
 const addButton = document.getElementById('add-btn');
 const confirmButton = document.getElementById('confirm-btn');
 const cancelButton = document.getElementById('cancel-btn');
 const viewPopup = document.getElementById('employee-view-section');
 const viewPopupcloseBtn = document.getElementById('close-employee-info');
+const unassignedContainer = document.querySelector('.unassigned-container');
+console.log("container", unassignedContainer);
+
 let   currentEditCard = null, currentEditData = null;  // to track mode(edit or add)
 
 export function    editEmployee(employee, employeeCard) {
@@ -104,3 +109,16 @@ cancelButton.addEventListener('click', (event) => {
     resetAndCloseForm(); 
 });
 
+// dragging events
+unassignedContainer.addEventListener('dragover', (event) => {
+    event.preventDefault();
+});
+
+unassignedContainer.addEventListener('drop', () => {
+    const draggingElement = document.querySelector('.is-dragging');
+    const employee = employeesData.find(e => e.id === draggingElement.dataset.id)
+    if (employee.room === "unassigned") return; // already in it
+    else removeEmployeeFromRoom(draggingElement, employee.room);
+
+    addUnassignedEmployee(employee);
+});

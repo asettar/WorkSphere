@@ -21,11 +21,9 @@ function    isAvailableRole(employeeRole, roomData) {
     return roomData.availablesRoles.includes(employeeRole);
 }
 
-function    roomCapacityReached() {
-    let currentEmployeesCount = currentSelectedEmployees.length + rooms[currentRoom].currentEmployees;
-    // console.log(currentRoom, "roomcapacity:", rooms);
-    // console.log(rooms[currentRoom].currentEmployees, currentEmployeesCount, "max:", rooms[currentRoom].maxEmployees);
-    return currentEmployeesCount === rooms[currentRoom].maxEmployees;
+function    roomCapacityReached(roomName) {
+    let currentEmployeesCount = currentSelectedEmployees.length + rooms[roomName].currentEmployees;
+    return currentEmployeesCount === rooms[roomName].maxEmployees;
 }
 
 function    addEmployeeSelectionEvent(employeeCard, employeeData) {
@@ -36,7 +34,7 @@ function    addEmployeeSelectionEvent(employeeCard, employeeData) {
     }
 
     else {
-        if (roomCapacityReached()) {
+        if (roomCapacityReached(currentRoom)) {
             // alert("max is reached");
             const error = addErrorMessage("room capacity have been reached");
             employeeCard.after(error);
@@ -74,7 +72,7 @@ function    removeUnassignedEmployee(employee) {
     unassignedCard.remove();
 }
 
-function    removeEmployeeFromRoom(employeeCard, roomName) {
+export function    removeEmployeeFromRoom(employeeCard, roomName) {
     employeeCard.remove();
     rooms[roomName].currentEmployees--;
     checkRoomStyle(roomName);
@@ -125,25 +123,34 @@ function    addRoomAdditionButtonEvent(roomCard, roomData, roomName) {
 function    checkRoomStyle(roomName) {
     const roomContainer = document.getElementById(roomName);
     let currentEmployees = rooms[roomName].currentEmployees; 
-    console.log("roomStyle", roomName);
-    console.log(currentEmployees);
-    
 
-    console.log(roomName, currentEmployees);
     if (currentEmployees > 0)
         roomContainer.style.backgroundColor = 'white';
     else if (roomName !== "conference-room" && roomName !== "staff-room") 
         roomContainer.style.backgroundColor = '#f9d0ddff';
+
+    // update displayed capacity
+    const capacity = roomContainer.querySelector('.capacity');
+    capacity.innerHTML = `${rooms[roomName].currentEmployees} / ${rooms[roomName].maxEmployees}`;
+    // remove add option if fulle capacity reached
+    const addBtn = roomContainer.querySelector('.add-employee-room');
+    if (rooms[roomName].currentEmployees === rooms[roomName].maxEmployees)
+        addBtn.style.display = 'none';
+    else addBtn.style.display = 'inline';
 }
 
 function    addRoomDraggingEvent(roomCard, roomName) {
     roomCard.addEventListener('dragover', (event) => {
         event.preventDefault();
     });
+    
+    // drop
     roomCard.addEventListener('drop', () => {
-        // to do check room maxcapacity, or employee not allowed to enter -> timer room style update 
+        console.log("drop");
         const draggingElement = document.querySelector('.is-dragging');
         const employee = employeesData.find(e => e.id === draggingElement.dataset.id)
+        if (roomCapacityReached(roomName) || !isAvailableRole(employee.role, rooms[roomName]))
+            return ;
         if (employee.room === "unassigned") draggingElement.remove();
         else removeEmployeeFromRoom(draggingElement, employee.room);
         
@@ -154,7 +161,6 @@ function    addRoomDraggingEvent(roomCard, roomName) {
 window.addEventListener("DOMContentLoaded", () => {
     for (let [roomName, roomData] of Object.entries(rooms)) {
         const roomCard = document.getElementById(roomName);
-        // todo: update style if it is empty(pale color if it is empty)
         checkRoomStyle(roomName);
         addRoomAdditionButtonEvent(roomCard, roomData, roomName);
         addRoomDraggingEvent(roomCard, roomName);
