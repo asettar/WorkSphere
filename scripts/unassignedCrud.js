@@ -10,12 +10,10 @@ const cancelButton = document.getElementById('cancel-btn');
 const viewPopup = document.getElementById('employee-view-section');
 const viewPopupcloseBtn = document.getElementById('close-employee-info');
 const unassignedContainer = document.querySelector('.unassigned-container');
-console.log("container", unassignedContainer);
 
 let   currentEditCard = null, currentEditData = null;  // to track mode(edit or add)
 
 export function    editEmployee(employee, employeeCard) {
-    console.log("edit clicked");
     currentEditCard = employeeCard, currentEditData = employee;
     showForm();
     prefillFormData(employee);
@@ -90,7 +88,6 @@ addButton.addEventListener('click', () => {
 });
 
 confirmButton.addEventListener('click', (event) => {
-    console.log("confirm clicked");
     event.preventDefault();
     // confirm
     if (isValidForm()) {
@@ -104,8 +101,6 @@ confirmButton.addEventListener('click', (event) => {
 
 cancelButton.addEventListener('click', (event) => {
     event.preventDefault();
-    console.log("cancel clicked");
-    // return ;
     resetAndCloseForm(); 
 });
 

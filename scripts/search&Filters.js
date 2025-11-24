@@ -22,7 +22,6 @@ function    matchRoleFilter(role) {
 }
 
 function    filterCards() {
-    console.log("executing filter");
     const employeesCards = document.querySelectorAll('.employee-card');
     for (const card of employeesCards) {
         const name = getEmployeeName(card);

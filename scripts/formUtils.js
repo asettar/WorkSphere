@@ -19,7 +19,6 @@ export function resetAndCloseForm() {
     });
     document.getElementById('form-profile-image').src = "";
     // update border color to default && remove previous errors
-    console.log(formInputs);
     formInputs.forEach(elem => {
         const nextSibling = elem.nextElementSibling;
         const isError = nextSibling && nextSibling.tagName === 'P';
@@ -32,9 +31,7 @@ export function resetAndCloseForm() {
 }
 
 function    deleteExperience(experienceCard) {
-    if (confirm("Experience will be deleted, are you sure?")) {
-        experienceCard.remove();
-    }
+    experienceCard.remove();
 }
 
 function    addNewExperienceEvents(newExperience) {
@@ -125,7 +122,6 @@ export function getEmployeeData(employee) {
 }
 
 addExperienceButton.addEventListener('click', (event) => {
-    console.log("add experience clicked");
     event.preventDefault();
     addExperienceForm();
 });

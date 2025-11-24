@@ -73,7 +73,6 @@ export function createRoomEmployeeCard(employee) {
     `;
     roomEmployee.setAttribute('draggable', true);
     roomEmployee.addEventListener('dragstart', () => {
-        console.log("start dragging from room");
         roomEmployee.classList.add('is-dragging');
     });
     roomEmployee.addEventListener('dragend', () => {

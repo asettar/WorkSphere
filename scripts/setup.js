@@ -129,7 +129,7 @@ function    isUnassignedEmpolyee(employee) {
     return (employee.room === "unassigned");
 }
 
-function    renderEmployeesCards() {
+export function    renderEmployeesCards() {
     for (let employee of employeesData) {
         if (isUnassignedEmpolyee(employee))
             addUnassignedEmployee(employee);

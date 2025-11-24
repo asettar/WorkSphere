@@ -85,7 +85,6 @@ export function    addEmployeeToRoom(employee, roomName) {
     employeesContainer.appendChild(employeeCard);
     employee.room = roomName; // change it's room in data
     rooms[roomName].currentEmployees++;
-    console.log("add", roomName, rooms[roomName].currentEmployees);
     // deletion event
     const deleteBtn = employeeCard.querySelector('.delete-employee-room'); 
     deleteBtn.addEventListener('click', () => {
@@ -120,7 +119,7 @@ function    addRoomAdditionButtonEvent(roomCard, roomData, roomName) {
 }
 
 
-function    checkRoomStyle(roomName) {
+export function    checkRoomStyle(roomName) {
     const roomContainer = document.getElementById(roomName);
     let currentEmployees = rooms[roomName].currentEmployees; 
 
@@ -146,7 +145,6 @@ function    addRoomDraggingEvent(roomCard, roomName) {
     
     // drop
     roomCard.addEventListener('drop', () => {
-        console.log("drop");
         const draggingElement = document.querySelector('.is-dragging');
         const employee = employeesData.find(e => e.id === draggingElement.dataset.id)
         if (roomCapacityReached(roomName) || !isAvailableRole(employee.role, rooms[roomName]))
