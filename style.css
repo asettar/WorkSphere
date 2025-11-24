@@ -294,7 +294,7 @@ textarea:focus {
     padding : 0.5vw;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 10% 90%;
+    grid-template-rows: 10% 1fr;
     gap: 5px;
     position: relative;
 }
@@ -307,7 +307,7 @@ textarea:focus {
     padding : 0.5vw;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 10% 90%;
+    grid-template-rows: 10% 1fr;
     gap: 5px;
     position: relative;
 }
@@ -319,6 +319,9 @@ textarea:focus {
     border-radius: 0.5em;
     padding : 0.5vw;
     position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% 1fr;
 }
 
 #staff-room {
@@ -328,6 +331,9 @@ textarea:focus {
     border-radius: 0.5em;
     padding : 0.5vw;
     position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% 1fr;
 }
 
 #archive-room {
@@ -337,6 +343,9 @@ textarea:focus {
     border-radius: 0.5em;
     padding : 0.5vw;
     position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10% 1fr;
 }
 
 .rooms-container h4 {
@@ -405,7 +414,7 @@ textarea:focus {
     border-radius: 2px;
     text-align: center;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow:ellipsis;
     white-space: nowrap;
     font-weight: 500;
 }
