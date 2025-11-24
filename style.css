@@ -436,11 +436,13 @@ textarea:focus {
 
 #general-employee-info {
     display: flex;
-    margin-left: 20px;
-    gap: 3em;
+    /* align-items: center; */
+    justify-content: center;
+    gap: 2em;
 }
+
 #general-employee-info p {
-    font-size: 1.2em;
+    font-size: clamp(12px, 0.9rem, 16px);
 }
 
 #employee-view-section h3 {
@@ -483,6 +485,18 @@ textarea:focus {
 .employee-info-values,
 .experience-view-values{
     color: rgb(115, 109, 109);
+    font-size: clamp(12px, 0.9rem, 16px);
+}
+
+.view-employee-experiecnes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.experience-view{
+    width: min(300px, 90%);
 }
 
 #room-popup-section {
