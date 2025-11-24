@@ -8,12 +8,14 @@ function    getEmployeeName(card) {
 
 function    getEmployeeRole(card) {
     const nameRole = card.querySelector('.name-role');
-    return nameRole.lastElementChild.innerText;
+    return nameRole.lastElementChild.innerText.toLowerCase();
 }
 
 function    matchSearchBar(name, role) {
     const searchValue = searchInput.value.toLowerCase();
-    return (name.startsWith(searchValue)|| role.startsWith(searchValue));
+
+    return (name.startsWith(searchValue)|| name.slice(name.indexOf(' ') + 1).startsWith(searchValue)
+        || role.startsWith(searchValue) || role.slice(role.indexOf(' ') + 1).startsWith(searchValue));
 }
 
 function    matchRoleFilter(role) {

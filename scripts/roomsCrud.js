@@ -15,6 +15,7 @@ function    showPopup() {
 function    closePopup() {
     popUpSection.style.display = 'none';
     popUpEmployeescontainer.innerHTML = '';
+    currentSelectedEmployees = [];
 }
 
 function    isAvailableRole(employeeRole, roomData) {
