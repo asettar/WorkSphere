@@ -1,6 +1,7 @@
 import { rooms, employeesData} from "./setup.js";
-import {createAvailableEmployeeCard, createRoomEmployeeCard, addUnassignedEmployee} from './cardsCreation.js'
+import {createAvailableEmployeeCard, createRoomEmployeeCard} from './cardsCreation.js'
 import {addErrorMessage} from "./formValidate.js"
+import {addUnassignedEmployee} from './unassignedCrud.js'
 
 const popUpSection = document.getElementById('room-popup-section')
 const popUpEmployeescontainer = popUpSection.querySelector('.room-employees-container')

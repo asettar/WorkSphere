@@ -1,4 +1,4 @@
-import {addUnassignedEmployee} from "./cardsCreation.js"
+import {addUnassignedEmployee} from "./unassignedCrud.js"
 import {addEmployeeToRoom} from "./roomsCrud.js"
 
 const demoEmployees = [
@@ -238,7 +238,6 @@ export  function    removeEmployeeData(employee) {
 
 export  function    addNewEmployeeData(employee) {
     employeesData.push(employee);
-    addUnassignedEmployee(employee);
     localStorage.setItem('employees', JSON.stringify(employeesData));
 }
 

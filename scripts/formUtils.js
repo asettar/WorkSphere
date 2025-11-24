@@ -102,7 +102,7 @@ export function prefillFormData(employee) {
         firstExperience = 0;
     }
 }
- 
+
 export function getEmployeeData(employee) {
     formInputs.forEach((input) => {
         employee[input.name] = input.value;

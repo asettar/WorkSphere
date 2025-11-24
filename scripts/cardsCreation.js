@@ -3,10 +3,10 @@ import { employeesData } from "./setup.js";
 
 const   unassignedContainer = document.getElementById('employees-container');
 
-function    createNewaUnassignedCard(employee) {
+export function    createNewaUnassignedCard(employee) {
     const newUnassignedCard = document.createElement('div');
     newUnassignedCard.classList.add('employee-card');
-    newUnassignedCard.dataset.id = employee.id;
+    newUnassignedCard.dataset.id = employee.id; // using it to directly acces the card from employee id [data-id="id"]
     newUnassignedCard.innerHTML = `
         <img class = "profile-icon" src="${employee.photo}" alt="">
         <div class = "name-role">
@@ -23,32 +23,8 @@ function    createNewaUnassignedCard(employee) {
     newUnassignedCard.setAttribute('draggable', 'true');
     return newUnassignedCard;
 }
-function    addUnassignedCardEvents(unassignedCard, employee) {
-    const editButton = unassignedCard.querySelector('.edit-btn');
-    const deleteButton = unassignedCard.querySelector('.delete-btn');
-    const viewButton = unassignedCard.querySelector('.view-btn');
 
-    editButton.addEventListener('click', () => editEmployee(employee, unassignedCard));
-    deleteButton.addEventListener('click', () => deleteEmployee(employee, unassignedCard));
-    viewButton.addEventListener('click', () => viewEmployee(employee));
-    unassignedCard.addEventListener('dragstart', () => {
-        unassignedCard.classList.add('is-dragging');
-    });
-    unassignedCard.addEventListener('dragend', () => {
-        unassignedCard.classList.remove('is-dragging');
-    });
-}
-
-export function    addUnassignedEmployee(employee) {
-    const newUnassignedCard = createNewaUnassignedCard(employee);
-    addUnassignedCardEvents(newUnassignedCard, employee);
-    unassignedContainer.appendChild(newUnassignedCard);
-    // change emoplyee room in case coming from remove from room
-    employee.room = 'unassigned';
-    localStorage.setItem('employees', JSON.stringify(employeesData));
-}
-
-
+// employee-room-cards
 export function createAvailableEmployeeCard(employee) {
     const availableEmployee = document.createElement('div');
     availableEmployee.classList.add('employee-card');
@@ -60,6 +36,7 @@ export function createAvailableEmployeeCard(employee) {
             <span>${employee.role}</span>
         </div>
     `;
+    availableEmployee.style.cursor = 'auto';
     return availableEmployee;
 }
 

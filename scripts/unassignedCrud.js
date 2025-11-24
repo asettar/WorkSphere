@@ -2,7 +2,7 @@ import {employeesData, removeEmployeeData, addNewEmployeeData} from './setup.js'
 import {showForm, prefillFormData, resetAndCloseForm, getEmployeeData} from './formUtils.js';
 import {isValidForm} from "./formValidate.js";
 import {removeEmployeeFromRoom} from './roomsCrud.js'; 
-import {addUnassignedEmployee} from './cardsCreation.js';
+import {createNewaUnassignedCard} from './cardsCreation.js';
 
 const addButton = document.getElementById('add-btn');
 const confirmButton = document.getElementById('confirm-btn');
@@ -26,6 +26,7 @@ export function    deleteEmployee(employee, employeeCard) {
     removeEmployeeData(employee);
 }
 
+// view
 function    closeViewEmployeePopup() {
     viewPopup.style.display = 'none';
     const experienceCards = viewPopup.querySelectorAll('.experience-view');
@@ -47,7 +48,7 @@ export function viewEmployee(employee) {
 
     for (let i = 0; i < employee.experience.length; i++) {
         const newExperienceCard = i ? experienceCard.cloneNode(true) : experienceCard;
-        const values = experienceCard.querySelectorAll('.experience-view-values p');
+        const values = newExperienceCard.querySelectorAll('.experience-view-values p');
         values.forEach(p => {
             p.innerHTML = employee.experience[i][p.dataset.feild];
         });
@@ -55,9 +56,35 @@ export function viewEmployee(employee) {
     }
 }
 
+function    addUnassignedCardEvents(unassignedCard, employee) {
+    const editButton = unassignedCard.querySelector('.edit-btn');
+    const deleteButton = unassignedCard.querySelector('.delete-btn');
+    const viewButton = unassignedCard.querySelector('.view-btn');
+
+    editButton.addEventListener('click', () => editEmployee(employee, unassignedCard));
+    deleteButton.addEventListener('click', () => deleteEmployee(employee, unassignedCard));
+    viewButton.addEventListener('click', () => viewEmployee(employee));
+    unassignedCard.addEventListener('dragstart', () => {
+        unassignedCard.classList.add('is-dragging');
+    });
+    unassignedCard.addEventListener('dragend', () => {
+        unassignedCard.classList.remove('is-dragging');
+    });
+}
+
+export function    addUnassignedEmployee(employee) {
+    const newUnassignedCard = createNewaUnassignedCard(employee);
+    addUnassignedCardEvents(newUnassignedCard, employee);
+    unassignedContainer.appendChild(newUnassignedCard);
+    // change emoplyee room in case coming from remove from room
+    employee.room = 'unassigned';
+    localStorage.setItem('employees', JSON.stringify(employeesData));
+}
+
 function    addNewEmployee() {
     const employee = {id: Date.now()};
     getEmployeeData(employee);
+    addUnassignedEmployee(employee);
     addNewEmployeeData(employee);
 }
 
