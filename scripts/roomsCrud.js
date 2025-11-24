@@ -21,7 +21,7 @@ function    isAvailableRole(employeeRole, roomData) {
     return roomData.availablesRoles.includes(employeeRole);
 }
 
-function    roomCapacityReached(roomName) {
+export function    roomCapacityReached(roomName) {
     let currentEmployeesCount = currentSelectedEmployees.length + rooms[roomName].currentEmployees;
     return currentEmployeesCount === rooms[roomName].maxEmployees;
 }
