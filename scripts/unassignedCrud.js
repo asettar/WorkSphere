@@ -15,7 +15,7 @@ let   currentEditCard = null, currentEditData = null;  // to track mode(edit or 
 
 export function    editEmployee(employee, employeeCard) {
     currentEditCard = employeeCard, currentEditData = employee;
-    showForm();
+    showForm(0);
     prefillFormData(employee);
     // confirm/cancel events will continue 
 }
@@ -111,7 +111,7 @@ viewPopupcloseBtn.addEventListener('click', closeViewEmployeePopup);
 
 addButton.addEventListener('click', () => {
     currentEditCard = null, currentEditData = null;
-    showForm();
+    showForm(1);
 });
 
 confirmButton.addEventListener('click', (event) => {

@@ -6,7 +6,10 @@ const addExperienceButton = document.getElementById('add-experience-btn');
 const roleInput = document.getElementById('role-input'); 
 let formInputs; // will be initialized after adding first experience form 
 
-export  function    showForm() {
+export  function    showForm(isAdditionMode) {
+    if (isAdditionMode)
+        form.firstElementChild.innerHTML = 'Add new employee';
+    else  form.firstElementChild.innerHTML = 'Edit employee';
     mainContent.style.display = 'none';
     form.style.display = 'flex';
 }
