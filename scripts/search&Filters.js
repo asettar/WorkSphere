@@ -19,8 +19,10 @@ function    matchSearchBar(name, role) {
 }
 
 function    matchRoleFilter(role) {
-    const roleFilterValue = roleFilter.value;
-    return  (roleFilter.value === "" || roleFilterValue === role);
+    const roleFilterValue = roleFilter.value.toLowerCase();
+    console.log(role);
+    console.log(roleFilter.value);
+    return  (roleFilter.value === "" || roleFilterValue.toLowerCase() === role);
 }
 
 function    filterCards() {

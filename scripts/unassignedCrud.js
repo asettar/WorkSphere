@@ -106,7 +106,6 @@ function    updateEmployee() {
 const isAdditionMode = () => currentEditCard === null;
 
 // events
-
 viewPopupcloseBtn.addEventListener('click', closeViewEmployeePopup);
 
 addButton.addEventListener('click', () => {
