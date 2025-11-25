@@ -22,7 +22,7 @@ function    matchRoleFilter(role) {
     const roleFilterValue = roleFilter.value.toLowerCase();
     console.log(role);
     console.log(roleFilter.value);
-    return  (roleFilter.value === "" || roleFilterValue.toLowerCase() === role);
+    return  (roleFilter.value === "" || roleFilterValue === role);
 }
 
 function    filterCards() {
